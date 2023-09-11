@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 100%;
+            border-top: 1px solid #dcdcdc;
+            border-spacing: 0;
+        }
+        table td {
+            border-bottom: 1px solid #dcdcdc;
+
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+    </script>
+    <script>
+        // 50칸 테이블(5/10)(1-50)
+        {
+            let num = 1;
+            let table = "<table class='table'>";
+
+            for(let i=1; i<=10; i++){
+                table += "<tr>";
+
+                for(let j=1; j<=5; j++){
+                    table += "<td>" + num + "</td>";
+                    num++;
+                }
+
+                table += "</tr>";
+            }
+
+            table += "</table>";
+
+            document.write(table);
+        }
+
+        // 짝수
+        {
+            let num = 2;
+            let table = "<table class='table'>";
+
+            for(let i=1; i<=10; i++){
+                table += "<tr>";
+
+                for(let j=1; j<=5; j++){
+                    table += "<td>" + num + "</td>";
+                    num += 2;
+                }
+
+                table += "</tr>";
+            }
+
+            table += "</table>";
+
+            document.write(table);
+        }
+
+        // 3의 배수
+        {
+            let num = 3;
+
+            let table = "<table class='table'>";
+
+            for(let i=1; i<=10; i++){
+                table += "<tr>";
+
+                for(let j=1; j<=5; j++){
+                    table += "<td>" + num + "</td>";
+                    num += 3;
+                }
+
+                table += "</tr>";
+            }
+
+            table += "</table>";
+
+            document.write(table);
+        }
+    </script>
+</body>
+</html>

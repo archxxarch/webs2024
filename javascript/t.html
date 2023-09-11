@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  1부터 100까지 출력(초깃값0)
+        for(let i=0; i<100; i++){
+            console.log(i+1);
+        }
+
+        // 2부터 55까지 출력(초깃값0)
+        for(let i=0; i<54; i++){
+            console.log(i+2);
+        }
+
+        // 1부터 100(짝수만) for문
+        for(let i=2; i<=100; i+=2){
+            console.log(i);
+        }
+
+        // 1부터 100(짝수만) while문
+        let i = 2;
+        while (i <= 100){
+            console.log(i);
+            i += 2;
+        }
+        
+        // 1부터 100(짝수만) if문 for문
+        for(let i=1; i<=100; i++){
+            if(i % 2 == 0){
+                console.log(i)
+            }
+        }
+
+        // 1부터 100(홀수만) for문
+        for(let i=1; i<=100; i+=2){
+            console.log(i);
+        }
+
+        // 1부터 100(홀수만) while문
+        {
+            let i = 1;
+            while (i <= 100){
+                console.log(i);
+                i += 2;
+            }
+        }
+
+        // 1부터 100(홀수만) if문 for문
+        for(let i=1; i<=100; i++){
+            if(i % 2 == 1){
+                console.log(i)
+            }
+        }
+
+        // 1부터 100까지(5의 배수) for문
+        for(let i=5; i<=100; i+=5){
+            console.log(i);
+        }
+
+        // 1부터 100까지(5의 배수) while문
+        {
+            let i = 5;
+            while(i <= 100){
+                console.log(i);
+                i += 5;
+            }
+        }
+
+        // 1부터 100까지(5의 배수) if문 for문
+        for(let i=1; i<=100; i++){
+            if(i % 5 == 0){
+                console.log(i);
+            }
+        }
+
+        // 1부터 100까지 (홀수는 빨간색, 짝수는 파란색)
+        {
+            for(let i=1; i<=100; i++){
+                if(i % 2 == 0){
+                    document.write("<span style='color:blue'>"+i+"</span>", "<br>");
+                } else {
+                    document.write("<span style='color:red'>"+i+"</span>", "<br>");
+                }
+            }
+        }
+
+        // 
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            for(let i=0; i<arr.length; i++){
+                // console.log(arr[i]); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+                if(arr[i] % 2 == 0){
+                    console.log(arr[i]);
+                }
+            }
+        }
+
+        for(let i=8; i==8; i++){
+        console.log("8단")
+        for(let j=1; j<10; j++){
+            console.log(i + "*" + j + "=" + i*j);
+        }
+    }
+    </script>
+</body>
+</html>

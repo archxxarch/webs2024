@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃05</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            height: 100px;
+            background-color: #EEEBE9;
+        }
+        #nav {
+            height: 100px;
+            background-color: #B9AAA5;
+        }
+        #main {
+            height: 780px;
+            background-color: #886F65;
+        }
+        #footer {
+            height: 100px;
+            background-color: #4E342E;
+        }
+        .container {
+            width: 1200px;
+            height: inherit;
+            margin: 0 auto;
+            background-color: rgba(0,0,0,.2);
+        }
+        .contents {
+            display: grid;
+            grid-template-areas: 
+            "cont1 cont1"
+            "cont2 cont2"
+            "cont3 cont4"
+            ;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 100px 200px 480px;
+        }
+        .cont1 {
+            grid-area: cont1;
+            background-color: #74574A;
+        }
+        .cont2 {
+            grid-area: cont2;
+            background-color: #684D43;
+        }
+        .cont3 {
+            grid-area: cont3;
+            background-color: #594139;
+        }
+        .cont4 {
+            grid-area: cont4;
+            background-color: #4A352F;
+        }
+        @media (max-width: 1220px){
+            .container {
+                width: 90%;
+            }
+            .contents {
+            display: grid;
+            grid-template-areas: 
+            "cont1 cont2 cont2"
+            "cont1 cont3 cont4"
+            ;
+            grid-template-columns: 33.3333% 33.3333% 33.3333%;
+            grid-template-rows: 390px 390px;
+            }
+        }
+        @media (max-width: 768px){
+            .container {
+                width: 100%;
+            }
+            .contents {
+            display: grid;
+            grid-template-areas: 
+            "cont1 cont2"
+            "cont1 cont3"
+            "cont1 cont4"
+            ;
+            grid-template-columns: 30% 70%;
+            grid-template-rows: 260px 260px 260px;
+            }
+        }
+        @media (max-width: 600px){
+            .container {
+                width: 100%;
+            }
+            .contents {
+            display: grid;
+            grid-template-areas: 
+            "cont1"
+            "cont2"
+            "cont3"
+            "cont4"
+            ;
+            grid-template-columns: 100%;
+            grid-template-rows: 150px 210px 210px 210px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="container"></div>
+        </header>
+        <nav id="nav">
+            <div class="container"></div>
+
+        </nav>
+        <main id="main">
+            <div class="container contents">
+                <article class="cont1"></article>
+                <article class="cont2"></article>
+                <article class="cont3"></article>
+                <article class="cont4"></article>
+            </div>
+
+        </main>
+        <footer id="footer">
+            <div class="container"></div>
+        </footer>
+        
+    </div>
+
+    <script>
+        // 01. for()
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            for(let i=0; i<arr.length; i++){
+                document.write(arr[i],", ");
+            }
+            document.write("<br>");
+        }
+
+        // 02. forEach()
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            arr.forEach((el) => {
+                document.write(el,", ");
+
+            })
+            document.write("<br>");
+        }
+
+        // 03. for of
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            for(let el of arr){
+                document.write(el,", ");
+            }
+            document.write("<br>");
+        }
+
+        // 04. for in
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            for(let el in arr){
+                document.write(arr[el],", ");
+            }
+            document.write("<br>");
+        }
+
+        // 05. map()
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            arr.map((el) => {
+                document.write(el,", ");
+
+            })
+            document.write("<br>");
+        }
+
+        // 06. filter()
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            arr.filter((el) => {
+                document.write(el,", ");
+
+            })
+            document.write("<br>");
+        }
+
+        // 07. 1~100합
+        {
+            let sum = 0;
+            for(let i=1; i<=100; i++){
+                sum += i;
+            }
+            document.write(sum);
+            document.write("<br>");
+
+        }
+        // 08. 8단
+        {
+            for(let i=8; i<=8; i++){
+                for(let j=1; j<=9; j++){
+                    document.write(i + "X" + j + "=" + i*j + "<br>");
+                }
+            }
+        }
+
+        // 09. 테이블 10*10
+        {
+            let num = 1;
+            let table = "<table class='table'>";
+
+                for(let i=1; i<=10; i++){
+                    table += "<tr>";
+                    for(let j=1; j<=10; j++){
+                        table += "<td>"+num+"</td>";
+                        num++;
+                    }
+                    table += "</tr>";
+                }
+                table += "</table>";
+
+                document.write(table);
+        }
+    </script>
+</body>
+</html>
