@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>퀴즈 이펙트04</title>
 
     <link rel="stylesheet" href="assets/css/quiz.css">
-    <link rel="stylesheet" href="assets/css/ani.css">
     <style>
         .quiz__score {
             position: fixed;
@@ -22,6 +22,7 @@
         }
     </style>
 </head>
+
 <body>
     <header id="header">
         <h1>
@@ -43,7 +44,6 @@
 
     <main id="main">
         <div class="quiz__wrap"></div>
-        <div class="quiz__score">0</div>
     </main>
     <!-- ..main -->
 
@@ -55,1323 +55,48 @@
     <script>
         // 선택자
         const quizWrap = document.querySelector(".quiz__wrap");
-        const quizScore = document.querySelector(".quiz__score");
-        let totalScore = 0;
 
         // 문제 정보
         const quizInfo = [
             {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "동시에 여러 개의 입출력장치를 제어할 수 있는 채널은?",
-                infoChoice : {
-                    1: "Mutiplexer",
-                    2: "Duplex",
-                    3: "Resgister",
-                    4: "Selector" 
-                },
-                infoAnswer : "1",
-                infoDesc : "동시에 여러 개의 입출력장치를 제어할 수 있는 채널은 Mutiplexer Channel(다중 채널)입니다."
-            },  
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "기억장치 고유의 번지로서 0,1,2,3과 같이 16진수로 약속하여 순서대로 정해놓은 번지, 즉 기억장치 중의 기억장소를 직접 숫자로 지정하는 주소로서 기계어 정보가 기억되어 있는 것은?",
-                infoChoice : {
-                    1: "메모리주소",
-                    2: "베이스주소",
-                    3: "상대주소",
-                    4: "절대주소" 
-                },
-                infoAnswer : "4",
-                infoDesc : "기억장치 고유의 번지로서 0,1,2,3과 같이 16진수로 약속하여 순서대로 정해놓은 번지, 즉 기억장치 중의 기억장소를 직접 숫자로 지정하는 주소로서 기계어 정보가 기억되어 있는 것은 절대주소입니다."
-            },  
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "2진수 0110을 그레이 코드로 변환하면?",
-                infoChoice : {
-                    1: "0010",
-                    2: "0111",
-                    3: "0101",
-                    4: "1110" 
-                },
-                infoAnswer : "3",
-                infoDesc : "진수 0110을 그레이 코드로 변환하면 0101입니다."
-            },  
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "클럭펄스에 의해서 기억내용을 한 자리씩 이동하는 레지스터는?",
-                infoChoice : {
-                    1: "시프트 레지스터",
-                    2: "누산기 레지스터",
-                    3: "B 레지스터",
-                    4: "D 레지스터" 
-                },
-                infoAnswer : "1",
-                infoDesc : "시프트는 이동하다, 옮기다 라는 뜻으로 시프트 레지스터는 저장된 값을 왼쪽 또는 오른쪽으로 1비트씩 자리를 이동시킬 때 사용하는 레지스터입니다."
-            },  
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "연산에 사용되는 데이터 및 연산의 중간 결과를 레지스터에 저장하는 주된 목적은?",
-                infoChoice : {
-                    1: "비용 절약",
-                    2: "연산 속도의 향상",
-                    3: "기억장소의 절약",
-                    4: "연산의 정확도 증가" 
-                },
-                infoAnswer : "1",
-                infoDesc : "중간 결과를 레지스터에 저장해두면 중간 결과를 이용한 다음 연산을 바로 수행할 수 있어 연산 속도가 빨라집니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "입출력장치의 동작속도와 전자계산기 내부의 동작속도를 맞추는데 사용되는 레지스터는?",
-                infoChoice : {
-                    1: "버피 레지스터",
-                    2: "시프트 레지스터",
-                    3: "어드레스 레지스터",
-                    4: "상태 레지스터" 
-                },
-                infoAnswer : "1",
-                infoDesc : "두 장치 간 속도 차이를 극복하기 위해 사용하는 것은 일반적으로 버퍼이고, 레지스터 중 버퍼와 관련 있는 것은 메모리 버퍼 레지스터입니다. 메모리 버퍼 레지스터를 보통 버퍼 레지스터라고 합니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 중 정마트 부호 방식에 해당되는 것은?",
-                infoChoice : {
-                    1: "수직 패리티",
-                    2: "수평 패리티",
-                    3: "CRC 부호 방식",
-                    4: "비쿼너리 부호 방식" 
-                },
-                infoAnswer : "4",
-                infoDesc : "정마크 부호 방식은 전송문자를 부호화 할 때 각 부호의 1 또는 0의 개수를 일정하게 유지하고 전송하고 수신측에서는 전송된 문자 중 1 또는 0이 일정한 개수인가를 판정하여 에러를 검사하는 방식으로, 대표적인 정마크 부호 방식에는 2 out of 5 부호와 비쿼너리 부호가 있습니다."
-            },  
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "도메인에 대한 설명으로 가장 적절한 것은?",
-                infoChoice : {
-                    1: "릴레이션을 표현하는 기본 단위",
-                    2: "튜플들의 관계를 표현하는 범위",
-                    3: "튜플들을 구분할 수 있는 범위",
-                    4: "표현되는 속성 값을 범위" 
-                },
-                infoAnswer : "4",
-                infoDesc : "도메인은 표현되는 속성 값의 범위입니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "SQL에서 데이터베이스에 대한 일련의 처리를 하나로 모은 작업 단위로 관리할 수 있는데, 이 작업 단위는?",
-                infoChoice : {
-                    1: "페이지",
-                    2: "디스패치",
-                    3: "세그먼테이션",
-                    4: "트랜잭션" 
-                },
-                infoAnswer : "4",
-                infoDesc : "SQL에서 데이터베이스에 대한 일련의 처리를 하나로 모은 작업 단위로 관리할 수 있는 작업 단위는 트랜잭션입니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "SQL 명령문 중 (DROP TABLE  학생 RESTRICT) 의 의미가 가장 적절한 것은?",
-                infoChoice : {
-                    1: "학생 테이블만 제거한다",
-                    2: "학생 테이블이 다른 테이블에 의해 참조중이면 제거하지 않는다.",
-                    3: "학생 테이블과 이 테이블을 참조하는 다른 테이블도 함께 제거한다.",
-                    4: "학생 테이블을 제거할지의 여부를 사용자에게 다시 물어본다" 
-                },
-                infoAnswer : "2",
-                infoDesc : "DROP은 테이블을 삭제하는 명령인데, 옵션으로 RESTRICT을 지정하면 삭제할 테이블을 다른 개체가 참조하고 있으면 삭제를 취소합니다."
-            },  
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "데이터베이스 관리 시스템의 주요 기능에 속하지 않는 것은?",
-                infoChoice : {
-                    1: "관리 기능",
-                    2: "정의 기능",
-                    3: "조작 기능",
-                    4: "제어 기능" 
-                },
-                infoAnswer : "1",
-                infoDesc : "데이터베이스 관리 시스템의 주요 기능에는 정의 기능, 조작 기능, 제어 기능이 있습니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "SQL의 SELECT문에서 특정 열의 값을 기준으로 정렬할 떄 사용하는 절은?",
-                infoChoice : {
-                    1: "SORT BY절",
-                    2: "ORDER BY절",
-                    3: "ORDER TO절",
-                    4: "SORT 절" 
-                },
-                infoAnswer : "2",
-                infoDesc : "특정 열의 값을 기준으로 정렬할 떄 사용하는 절은 ORDER BY절입니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "고급언어나 코드화된 중간언어를 입력받아 목적 프로그램 생성없이 직접 기계어를 생성, 실행해주는 프로그램은?",
-                infoChoice : {
-                    1: "어셈블러",
-                    2: "인터프리터",
-                    3: "컴파일러",
-                    4: "크로스 컴파일러" 
-                },
-                infoAnswer : "2",
-                infoDesc : "고급언어나 코드화된 중간언어를 입력받아 목적 프로그램 생성없이 직접 기계어를 생성, 실행해주는 프로그램은 인터프리터입니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UNIX의 특징이 아닌 것은?",
-                infoChoice : {
-                    1: "계층적인 디렉터리 구조를 제공",
-                    2: "이식성과 확장성이 우수한 운영체제",
-                    3: "여러 사용자가 동시에 시스템 사용 가능",
-                    4: "완벽한 GUI 환경 제공" 
-                },
-                infoAnswer : "1",
-                infoDesc : "UNIX는 사용자의 명령으로 시스템이 수행되는 CUI 방식의 환경으로 제공합니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UNIX에서 입력 시 사용되는 KILL의 명령에 대한 설명으로 옳은 것은?",
-                infoChoice : {
-                    1: "마지막에 입력한 문자를 지운다.",
-                    2: "마지막에 입력한 단어를 지운다.",
-                    3: "한 줄 전체를 지운다.",
-                    4: "세줄의 입력을 위하여 한 줄을 띄운다." 
-                },
-                infoAnswer : "3",
-                infoDesc : "KILL 명령은  현재 실행중인 프로세스를 종료하거나 편집상태에서는 한 줄 전체를 지웁니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "운영체제의 성능 평가 항목으로 가장 거리가 먼 것은?",
-                infoChoice : {
-                    1: "신뢰도",
-                    2: "처리 능력",
-                    3: "비용",
-                    4: "사용 가능도" 
-                },
-                infoAnswer : "3",
-                infoDesc : "운영체제의 성능 평가 요인에는 처리 능력, 반환 시간, 사용 가능도, 신뢰도 등이 있습니다"
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "윈도우에서 디스크 조각 모음에 관한 설명으로 옳은 것은?",
-                infoChoice : {
-                    1: "디스크의 논리적 영역을 할당한다.",
-                    2: "디스크의 삭제된 파일을 복구한다.",
-                    3: "디스크의 물리적 손상 부분을 제거한다.",
-                    4: "디스크를 효율적으로 사용하기 위해서 파일을 정리한다." 
-                },
-                infoAnswer : "4",
-                infoDesc : "디스크 조각 모음은 디스크를 효율적으로 사용하기 위해서 파일을 정리하는 기능입니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "모뎀의 기능에 속하지 않는 것은?",
-                infoChoice : {
-                    1: "아날로그 신호를 디지털 신호로 변환한다.",
-                    2: "디지털 신호를 아날로그 신호로 변환한다.",
-                    3: "원거리 전송에 주로 이용된다.",
-                    4: "전이중 통신 방식을 반이중 통신 방식으로 변환한다." 
-                },
-                infoAnswer : "4",
-                infoDesc : "모뎀의 대표적인 기능은 변조, 복조 기능으로 1번은 복조, 2번은 변조 기능이며, 이 기능은 원거리 전송에 주로 이용됩니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "양쪽 방향으로 동시에 전송이 가능한 경우의 통신방식은?",
-                infoChoice : {
-                    1: "전이중 통신",
-                    2: "라디오",
-                    3: "단향 통신",
-                    4: "반이중 통신" 
-                },
-                infoAnswer : "1",
-                infoDesc : "양쪽 방향으로 동시에 전송이 가능한 경우의 통신방식은 전이중 통신입니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "마이크로파 통신 방식과 관계없는 것은?",
-                infoChoice : {
-                    1: "전자파를 이용하는 무선 통신 방식이다.",
-                    2: "광을 이용하므로 전송 속도가 빠르다.",
-                    3: "이동통신 수단으로도 이용되고 있다.",
-                    4: "중계거리를 고려하여야 한다." 
-                },
-                infoAnswer : "2",
-                infoDesc : "광, 즉 빛을 이용하는 것은 광섬유 케이블입니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 중 데이터 교환 방식이 아닌 것은?",
-                infoChoice : {
-                    1: "메시지 교환 방식",
-                    2: "회선 교환 방식",
-                    3: "패킷 교환 방식",
-                    4: "선로 교환 방식" 
-                },
-                infoAnswer : "4",
-                infoDesc : "선로 교환 방식은 데이터 통신 교환 방식이 아닙니다."
-            }, 
-            {
-                infoDate : "01회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "프로토콜의 기본적인 요소가 아닌 것은?",
-                infoChoice : {
-                    1: "구문",
-                    2: "의미",
-                    3: "타이밍",
-                    4: "처리" 
-                },
-                infoAnswer : "4",
-                infoDesc : "프로토콜의 기본 요소는 구문, 의미, 시간입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "입출력 제어 방식 중 DMA 방식의 설명으로 옳은 것은?",
-                infoChoice : {
-                    1: "중앙처리장치의 많은 간섭을 받는다.",
-                    2: "프로그램에 의한 방법과 인터럽트에 의한 방법을 갖고 있다.",
-                    3: "입출력장치와 기억장치 간에 직접 데이터를 주고 받는다.",
-                    4: "입출력을 제어하는 방식에서 가장 원시적인 방법이다." 
-                },
-                infoAnswer : "2",
-                infoDesc : "DMA(직접 메모리 접근)는 CPU의 참여 없이 입출력장치와 메모리가 직접 데이터를 주고 받는 방식입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "시프트 마이크로 동작의 종류에 해당하지 않는 것은?",
-                infoChoice : {
-                    1: "논리 시프트",
-                    2: "순환 시프트",
-                    3: "산술 시프트",
-                    4: "로테이트 시프트" 
-                },
-                infoAnswer : "4",
-                infoDesc : "시프트 마이크로 동작은 레지스터 내용에 대한 시프트동작을 실행하는것으로, 종류에는 직렬 전송 시프트, 논리 시프트, 산술 시프트, 순환 시프트가 있습니다. 마이크로 연산에서는 순환 시프트를 로테이트 시프트라고도 하지만, 마이크로 동작에서는 다른 것으로 봅니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "이항 연산에 해당하는 것은?",
-                infoChoice : {
-                    1: "논리곱 연산",
-                    2: "시프트 연산",
-                    3: "로테이트 연산",
-                    4: "보수 연산" 
-                },
-                infoAnswer : "1",
-                infoDesc : "이항 연산자는 A+B처럼 피연산자가 2개 필요한 연산자로, 종류에는 사칙연산, AND,OR,XOR,XNOR 등이 있습니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 중 절대주소 표현방식은?",
-                infoChoice : {
-                    1: "즉시 주소 지정방식",
-                    2: "직접 주소 지정방식",
-                    3: "간접 주소 지정방식",
-                    4: "계산에 의한 주소지정방식" 
-                },
-                infoAnswer : "2",
-                infoDesc : "절대주소는 임의의 기억장소에 대한 실제 주소인데, 직접 주소지정방식은 명령의 주소부에 있는 값이 절대주소, 즉 실제 데이터가 기억된 번지를 지정하는 방식입니다."
-            }, 
-            
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 중 로더의 기능이 아닌 것은?",
-                infoChoice : {
-                    1: "할당",
-                    2: "번역",
-                    3: "링킹",
-                    4: "재배치" 
-                },
-                infoAnswer : "2",
-                infoDesc : "번역은 컴파일러의 역할입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 중 연산자의 기본 기능에 속하지 않는 것은?",
-                infoChoice : {
-                    1: "전달 기능",
-                    2: "제어 기능",
-                    3: "데이터 검색 기능",
-                    4: "입출력 기능" 
-                },
-                infoAnswer : "3",
-                infoDesc : "연산자의 기능에는 제어 기능, 자료 전달 기능, 함수 연산 기능, 입출력 기능이 있습니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "16진수의 3D를 10진수로 변환하면?",
-                infoChoice : {
-                    1: "48",
-                    2: "61",
-                    3: "62",
-                    4: "49" 
-                },
-                infoAnswer : "2",
-                infoDesc : "16진수를 10진수로 변환하려면 16진수의 자리 값과 자리의 지수 제곱을 곱한 결과 값을모두 더하여 계산합니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "연산의 중심이 되는 레지스터는?",
-                infoChoice : {
-                    1: "General Register",
-                    2: "Address Register",
-                    3: "Accumulator",
-                    4: "Flip-flop" 
-                },
-                infoAnswer : "3",
-                infoDesc : "연산의 중식이 되는 레지스터는 누산기(Accumulator)입니다."
-            }, 
-            
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "마이크로프로세서의 기능이 아닌 것은?",
-                infoChoice : {
-                    1: "기억 기능",
-                    2: "메모리 관리",
-                    3: "산술 및 논리 연산",
-                    4: "제어 기능" 
-                },
-                infoAnswer : "2",
-                infoDesc : "마이크로프로세서는 메모리 관리 기능이 없습니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "순차적인 주소지정 등에 유리하며, 주소지정에 2개의 레지스터가 사용되는 방식은?",
-                infoChoice : {
-                    1: "직접 Addressing",
-                    2: "간접 Addressing",
-                    3: "상대 Addressing",
-                    4: "색인 Addressing" 
-                },
-                infoAnswer : "4",
-                infoDesc : "인덱스 주소지정방식은 명령어의 주소 부분에 인덱스 레지스터의 값이 더해져서 유효 주소를 계산하는 방식으로, 순차적인 주소지정방식에 유리합니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "기억장치에 액세스할 필요없이 스택을 이용하여 연산을 행하는 명령어 형식은?",
-                infoChoice : {
-                    1: "0-주소 명령어",
-                    2: "1-주소 명령어",
-                    3: "2-주소 명령어",
-                    4: "3-주소 명령어" 
-                },
-                infoAnswer : "1",
-                infoDesc : "주소 부분이 없어 스택을 이용하여 연산을 행하는 명령어 형식은 0-주소 명령어입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "입출력 채널의 기능으로 적합하지 않은 것은?",
-                infoChoice : {
-                    1: "압출력 명령을 해독한다.",
-                    2: "각 입출력장치의 명령실행을 지시한다.",
-                    3: "지시된 명령의 실행 상황을 제어한다.",
-                    4: "많은 입출력장치를 한 번에 종속적으로 동작시킨다." 
-                },
-                infoAnswer : "4",
-                infoDesc : "채널은 한 개 또는 여러 개의 입출력장치를 종속적이 아니라 개별적으로 동작시킵니다."
-            }, 
-            
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "SQL문의 형식으로 적당하지 않은 것은?",
-                infoChoice : {
-                    1: "SELECT ~ FROM ~ WHERE",
-                    2: "UPDATE ~ FROM ~ WHERE",
-                    3: "INSERT INTO ~ VALUES",
-                    4: "DELETE ~ FROM ~ WHERE" 
-                },
-                infoAnswer : "2",
-                infoDesc : "UPDATE는 SET를 사용하여 UPDATE ~ SET ~ WHERE ~와 같이 작성해야 합니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "스프레드시트 프로그램을 사용하여 처리할 업무와 거리가 먼 것은?",
-                infoChoice : {
-                    1: "직원들의 급여를 계산",
-                    2: "주문서와 견적서 만들어 출력",
-                    3: "동영상을 포함한 광고를 제작 발표",
-                    4: "차트와 그래프 만들어 재무 분석에 이용" 
-                },
-                infoAnswer : "3",
-                infoDesc : "동영상을 포함한 광고의 제작은 프레젠테이션 프로그램으로 처리하는 것이 효율적입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "SQL의 DML에 해당하지 않는 것은?",
-                infoChoice : {
-                    1: "INSERT",
-                    2: "UPDATE",
-                    3: "DROP",
-                    4: "DELETE" 
-                },
-                infoAnswer : "3",
-                infoDesc : "DROP은 데이터 정의어 입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "데이터베이스 관리 시스템의 필수 기능과 거리가 먼 것은?",
-                infoChoice : {
-                    1: "처리 기능",
-                    2: "정의 기능",
-                    3: "조작 기능",
-                    4: "제어 기능" 
-                },
-                infoAnswer : "1",
-                infoDesc : "DBMS의 필수 기능에는 정의 기능, 조작 기능, 제어 기능이 있습니다."
-            }, 
-            
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "스프레드시트에서 반복 실행하여야 하는 동일 작업이나 복잡한 작업을 하나의 명령으로 정의하여 실행할 수 있는 기능은?",
-                infoChoice : {
-                    1: "슬라이드",
-                    2: "매크로",
-                    3: "필터",
-                    4: "셀" 
-                },
-                infoAnswer : "2",
-                infoDesc : "스프레드시트에서 반복 실행하여야 하는 동일 작업이나 복잡한 작업을 하나의 명령으로 정의하여 실행할 수 있는 기능은 매크로입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "프레젠테이션을 구성하는 하나의 화면 단위는?",
-                infoChoice : {
-                    1: "시트",
-                    2: "슬라이드",
-                    3: "개체",
-                    4: "셀" 
-                },
-                infoAnswer : "2",
-                infoDesc : "프레젠테이션을 구성하는 하나의 화면 단위는 슬라이드입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "데이터베이스의 구조를 3단계로 구분할 때 해당하지 않는 것은?",
-                infoChoice : {
-                    1: "내부 스키마",
-                    2: "외부 스키마",
-                    3: "개념 스키마",
-                    4: "관계 스키마" 
-                },
-                infoAnswer : "4",
-                infoDesc : "스키마에서는 내부 스키마, 외부 스키마, 개념 스키마가 있습니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "현재 디렉토리의 내용을 확인하기 위하여 도스이 DIR명령을 사용하는 경우 화면에 가장 많은 파일을 표현할 수 있는 명령 방식은?",
-                infoChoice : {
-                    1: "DIR",
-                    2: "DIR/P",
-                    3: "DIR/W",
-                    4: "DIR*.*" 
-                },
-                infoAnswer : "3",
-                infoDesc : "DIR/W는 한 줄에 5개씩 출력해주므로 화면에 가장 많은 파일을 표현합니디."
-            }, 
-            
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "윈도우에서 파일 삭제 시 휴지통 폴더로 이동하지 않고 복원이 불가능한 삭제에 사용되는 키 입력은?",
-                infoChoice : {
-                    1: "ALT + DELETE",
-                    2: "CTRL + DELETE",
-                    3: "SHIFT + DELETE",
-                    4: "TAB + DELETE" 
-                },
-                infoAnswer : "3",
-                infoDesc : "파일을 선택하고 SHIFT + DELETE를 누르면 휴지통에 버리지 않고 바로 삭제됩니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UNIX 시스템이 이식성이 높은 가장 큰 이유는?",
-                infoChoice : {
-                    1: "COBOL 언어로 구성되어 있기 때문에",
-                    2: "C 언어로 구성되어 있기 때문에",
-                    3: "BASIC 언어로 구성되어 있기 때문에",
-                    4: "FORTRAN 언어로 구성되어 있기 때문에" 
-                },
-                infoAnswer : "2",
-                infoDesc : "UNIX 시스템이 이식성이 높은 가장 큰 이유는 C 언어로 구성되어 있기 때문입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "도스에서 내부 명령어에 해당하지 않는 것은?",
-                infoChoice : {
-                    1: "DEL",
-                    2: "DIR",
-                    3: "XCOPY",
-                    4: "COPY" 
-                },
-                infoAnswer : "2",
-                infoDesc : "XCOPY는 외부 명령어에 해당합니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "윈도우의 특징으로 거리가 먼 것은?",
-                infoChoice : {
-                    1: "PLUG AND PLAY 기능을 지원한다.",
-                    2: "16비트 운영체제이다.",
-                    3: "인터넷 접속 기능이 있다.",
-                    4: "멀티태스킹을 제공한다." 
-                },
-                infoAnswer : "2",
-                infoDesc : "윈도우는 이전 버전과의 호환을 위해 부분적으로 16비트 데이터 처리를 하나 대부분 32비트나 64비트 데이터 처리를 합니다."
-            }, 
-            
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "지정된 디렉터리를 포함함 하위 디렉터리와 모든 파일들을 복사하는 외부 명령어는?",
-                infoChoice : {
-                    1: "COPY",
-                    2: "DISKCOPY",
-                    3: "XCOPY",
-                    4: "ZCOPY" 
-                },
-                infoAnswer : "3",
-                infoDesc : "하위 디렉터리와 파일까지 복사할 수 있는 외부 명령어는 XCOPY입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "운영체제에 대한 설명으로 틀린 것은?",
-                infoChoice : {
-                    1: "컴퓨터 사용자와 하드웨어 간의 매개자 역할을 하는 프로그램의 집합체이다.",
-                    2: "운영체제의 목적은 사용자에게 쉽게 컴퓨터를 사용할 수 있는 환경의 제공이다.",
-                    3: "운영체제는 사용자 중심으로 시스템을 제어, 관리하지만 에러처리는 지원하지 않는다.",
-                    4: "운영체제의 종류로는 UNIX, 윈도우7 등이 있다." 
-                },
-                infoAnswer : "3",
-                infoDesc : "운영체제는 시스템의 제어, 관리 뿐만 아니라 에러 처리도 지원합니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "업무처리를 실시간 시스템으로 처리할 필요가 없는 것은?",
-                infoChoice : {
-                    1: "적의 공중 공격에 대비하여 동시에 여러 지점을 감시하는 시스템",
-                    2: "가솔린 정련에서 온도가 너무 높이 올라가는 경우 폭발을 방지하기 위해 조치를 취하는 시스템",
-                    3: "고객명단 자룔르 월 단위로 묶어 처리하는 시스템",
-                    4: "교통 관리, 비행조정 등과 같은외부 상태에 대한 신속한 제어를 목적으로 하는 시스템" 
-                },
-                infoAnswer : "3",
-                infoDesc : "고객명단 자룔르 월 단위로 묶어 처리하는 시스템은 일괄 서치 시스템이 적합한 업무입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "PCM 통신 방식에서 PAM신호를 허용된 몇 단계의 레벨 값으로 근사화 시키는 과정은?",
-                infoChoice : {
-                    1: "양자화",
-                    2: "부호화",
-                    3: "표본화",
-                    4: "다중화" 
-                },
-                infoAnswer : "1",
-                infoDesc : "PAM 신호를 허용된 몇단계의 레벨 값으로 근사화 시키는 과정은 양자화입니다."
-            }, 
-            {
-                infoDate : "02회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 중 광섬유 케이블에 대한 설명으로 틀린 것은?",
-                infoChoice : {
-                    1: "대용량 전송이 가능하다.",
-                    2: "누화나 전기적잡음의 영향을 받지 않는다.",
-                    3: "보안성이 취약하다.",
-                    4: "장거리 전송이 가능하다." 
-                },
-                infoAnswer : "3",
-                infoDesc : "광섬유 케이블은 도청하기 어려워 보안성이 뛰어납니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "일반적으로 명령어의 패치 사이클 중에는 현재 수행하고 있는 명령어의 위치를 가리키고, 실행 사이클 중에는 바로 다음에 실행할 명령어의 위치를 가리키는 레지스터는?",
-                infoChoice : {
-                    1: "누산기",
-                    2: "프로그램 카운터",
-                    3: "명렁어 레지스터",
-                    4: "범용 레지스터"
-                },
-                infoAnswer : "2",
-                infoDesc : "다음에 실행할 명령어의 위치를 가리키는 레지스터는 프로그램 카운터입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "전가산기는 어떤 회로로 구성되는가?",
-                infoChoice : {
-                    1: "반가산기 1개, OR 게이트",
-                    2: "반가산기 1개, AND 게이트",
-                    3: "반가산기 2개, OR 게이트",
-                    4: "반가산기 2개, AND 게이트"
-                },
-                infoAnswer : "3",
-                infoDesc : "전가산기는 반가산개 2개와 OR 게이트로 구성됩니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "EBCDIC 코드는 몇개의 ZONE 비트를 갖는가??",
-                infoChoice : {
-                    1: "1",
-                    2: "2",
-                    3: "3",
-                    4: "4"
-                },
-                infoAnswer : "4",
-                infoDesc : "EBCDIC 코드는 4개의 ZONE 비트와 4개의 DIGIT 비트로 표현합니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "인스트럭션 레지스터, 부호기, 번지해독기, 제어 계수기 등과 관계있는 장치는?",
-                infoChoice : {
-                    1: "입력장치",
-                    2: "제어장치",
-                    3: "연산장치",
-                    4: "기억장치"
-                },
-                infoAnswer : "2",
-                infoDesc : "인스트럭션 레지스터, 부호기, 번지해독기, 제어 계수기는 제어장치입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "주소 일부를 접속하거나 계산하여 기억장치에 접근 시킬 수 있는 주소의 일부분을 생략한 주소표현방식은?",
-                infoChoice : {
-                    1: "절대주소",
-                    2: "약식주소",
-                    3: "생략주소",
-                    4: "자료자신"
-                },
-                infoAnswer : "2",
-                infoDesc : "주소 일부를 접속하거나 계산하여 기억장치에 접근 시킬 수 있는 주소의 일부분을 생략한 주소표현방식은 생략주소입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "관계 데이터베이스에서 하나의 애트리뷰트가 취할 수 있는 같은 타입의 모든원자값들의 집합을 무엇이라고 하는가?",
-                infoChoice : {
-                    1: "튜플",
-                    2: "도메인",
-                    3: "스키마",
-                    4: "인스턴스"
-                },
-                infoAnswer : "2",
-                infoDesc : "계 데이터베이스에서 하나의 애트리뷰트가 취할 수 있는 같은 타입의 모든원자값들의 집합은 도메인입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "데이터 베이스 제어어 중 사용자에게 조작에 대한 권한을 부여하는 명령어는?",
-                infoChoice : {
-                    1: "OPTION",
-                    2: "REVOKE",
-                    3: "GRANT",
-                    4: "VALUES"
-                },
-                infoAnswer : "3",
-                infoDesc : "데이터 베이스 제어어 중 사용자에게 조작에 대한 권한을 부여하는 명령어는 GRANT입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "하나 이상의 기본 테이블로부터 유도되어 만들어지는 가상 테이블은?",
-                infoChoice : {
-                    1: "뷰",
-                    2: "유리창",
-                    3: "스키마",
-                    4: "도메인"
-                },
-                infoAnswer : "1",
-                infoDesc : "하나 이상의 기본 테이블로부터 유도되어 만들어지는 가상 테이블은 뷰입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UNIX에서 파일을 삭제할 때 사용되는 명령어는?",
-                infoChoice : {
-                    1: "Is",
-                    2: "cp",
-                    3: "pwd",
-                    4: "rm"
-                },
-                infoAnswer : "4",
-                infoDesc : "UNIX에서 파일을 삭제할 때 사용되는 명령어는 rm입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "도스의 명령어 중 비교적 자주 사용되어 실행 과정이 간단하고 별도의 파일 형태를 갖지 않아 언제든지 실행이 가능한 것은?",
-                infoChoice : {
-                    1: "SORT",
-                    2: "CLS",
-                    3: "SYS",
-                    4: "FDISK"
-                },
-                infoAnswer : "2",
-                infoDesc : "파일형태를 갖지 않아 언제든지 실행이 가능한 것은 내부 명령어로 보기 중 내부 명령어는 CLS 입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다중 프로그래밍 시스템 내에서 서로 다른 프로세스가 일어날 수 없는 사건을 무한정 기다리고 있는 것은?",
-                infoChoice : {
-                    1: "세마포어",
-                    2: "가비지 수집",
-                    3: "코루틴",
-                    4: "교착상태"
-                },
-                infoAnswer : "4",
-                infoDesc : "다중 프로그래밍 시스템 내에서 서로 다른 프로세스가 일어날 수 없는 사건을 무한정 기다리고 있는 것은 교착상태입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "운영체제의 목적이 아닌 것은?",
-                infoChoice : {
-                    1: "반환 시간 증가",
-                    2: "처리 능력 향상",
-                    3: "사용 가능도 향상",
-                    4: "신뢰도 향상"
-                },
-                infoAnswer : "1",
-                infoDesc : "운영체제의 목적에는 반환 시간 단축, 처리 능력 향상, 사용 가능도 향상, 신뢰도 향상이 있습니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "윈도우의 제어판에서 MID형식의 음악 파일을 재생하는데 필요한 드라이브 파일을 설정하는 것은?",
-                infoChoice : {
-                    1: "시스템",
-                    2: "멀티미디어",
-                    3: "사운드",
-                    4: "디스플레이"
-                },
-                infoAnswer : "2",
-                infoDesc : "윈도우의 제어판에서 MID형식의 음악 파일을 재생하는데 필요한 드라이브 파일을 설정하는 것은 멀티미디어입니다."
-            }, 
-            {
-                infoDate : "03회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "윈도우에서 디스크 조각 모음에 관한 설명으로 틀린 것은?",
-                infoChoice : {
-                    1: "조각 모음을 하는데 걸리는 시간은 볼륨에 있는 파일의 수와 크기, 조각난 양 등에 따라 달라진다.",
-                    2: "컴퓨터 시스템의 속도를 향상시키는 방법 중 하나이다.",
-                    3: "디스크를 효율적으로 사용하기 위해 파일을 정리하는 것이다.",
-                    4: "CD-ROM 드라이브 및 네트워크 드라이브에서도 디스크 조각 모음을 수행할 수 있다."
-                },
-                infoAnswer : "4",
-                infoDesc : "CD-ROM 드라이브 및 네트워크 드라이브에서도 디스크 조각 모음을 수행할 수 없습니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "현재 실행중인 명령어를 기억하고 있는 제어장치 내의 레지스터는?",
-                infoChoice : {
-                    1: "누산기",
-                    2: "인덱스 레지스터",
-                    3: "메모리 레지스터",
-                    4: "명령 레지스터"
-                },
-                infoAnswer : "4",
-                infoDesc : "현재 실행중인 명령어를 기억하고 있는 제어장치 내의 레지스터는 명령 레지스터입니다. "
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "반가산기의 논리회로도에서 자리올림이 발새하는 회로는?",
-                infoChoice : {
-                    1: "OR",
-                    2: "NOT",
-                    3: "EXCLUSIVE OR",
-                    4: "AND"
-                },
-                infoAnswer : "4",
-                infoDesc : "반가산기에서 자리올림이 발생하는 회로는 AND입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "명령어 내의 오퍼랜드 부분의 주소가 실제 데이터의 주소를 가지고 있는 포인터의 주소를 나타내는 방식으로, 데이터 처리에 대한 유연성이 좋으나 주소 참조 횟수가 많다는 단접이 있는  주소지정방식은?",
-                infoChoice : {
-                    1: "즉시 주소지정",
-                    2: "간접 주소지정",
-                    3: "직접 주소지정",
-                    4: "계산에 의한 주소지정"
-                },
-                infoAnswer : "2",
-                infoDesc : "간접 주소지정에 대한 설명입니다."
-            },
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "CPU에서 명령이 실헹되는 순서를 제어하거나 특정 프로그램에 관련한 컴퓨터 시스템의 상태를 나타내고 유지하기 위한 제어 워드로서, 실행중인 CPU의 상황을 나타내는 것은?",
-                infoChoice : {
-                    1: "PSW",
-                    2: "MBR",
-                    3: "MAR",
-                    4: "PC"
-                },
-                infoAnswer : "1",
-                infoDesc : "PSW에 관한 설명입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "명령어는 연산자 부분과 주소 부분으로 구성되는데 주소 부분의 구성 요소가 아닌 것은?",
-                infoChoice : {
-                    1: "데이터의 주소 자체",
-                    2: "명령어의 순서",
-                    3: "데이터의 종류",
-                    4: "데이터가 있는 주소를 구하는데 필요한 정보"
-                },
-                infoAnswer : "3",
-                infoDesc : "데이터종류는 연산자부의 구성요소입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "산술 및 논리 연산의 결과를 일시적으로 기억하는 것은?",
-                infoChoice : {
-                    1: "가산기",
-                    2: "누산기",
-                    3: "보수기",
-                    4: "감산기"
-                },
-                infoAnswer : "2",
-                infoDesc : "산술 및 논리 연산의 결과를 일시적으로 기억하는 것은 누산기입니다."
-            },
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "스프레드시트 작업에서 반복되거나 복잡한 단계를 수행하는 작업을 일괄적으로 자동화시켜 처리하는 방법에 해당하는 것은?",
-                infoChoice : {
-                    1: "매크로",
-                    2: "정렬",
-                    3: "검색",
-                    4: "필터"
-                },
-                infoAnswer : "1",
-                infoDesc : "매크로의 기능에 대한 문제입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UNIX에서 현재 작업중인 디렉터리의 모든 파일을 보여주는 명령은?",
-                infoChoice : {
-                    1: "cd",
-                    2: "mv",
-                    3: "Is",
-                    4: "Tar"
-                },
-                infoAnswer : "3",
-                infoDesc : "UNIX에서 현재 작업중인 디렉터리의 모든 파일을 보여주는 명령은 Is입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "운영체제에서 가장 기초적인 시스템 기능을 담당하는 부분으로 관리자, 제어프로그램, 핵 등으로 불리며 프로세스 관리, CPU제어, 입출력제어, 기억장치 관리 드의 기능을 수행하는 것은?",
-                infoChoice : {
-                    1: "커널",
-                    2: "파일 시스템",
-                    3: "인터페이스",
-                    4: "데이터 관리"
-                },
-                infoAnswer : "1",
-                infoDesc : "커널에 대한 설명입니다."
-            },                                          
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "컴퓨터 시스템을 구성하고 있는 하드웨어 장치와 일반 컴퓨터 사용자 또는 컴퓨터에서 실행되는 응용 프로그램의 중간에 위치하여 사용자들이 보다 쉽고 간편하게 컴퓨터 시스템을 이용할 수 있도록 제어 관리하는 프로그램은?",
-                infoChoice : {
-                    1: "컴파일러",
-                    2: "운영체제",
-                    3: "스풀러",
-                    4: "매크로"
-                },
-                infoAnswer : "2",
-                infoDesc : "운영체제에 대한 설명입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "페이지 대체 알고리즘에서 계수기를 두어 가장 오랫동안 참조되지 않은 페이지를 교체할 페이지로 선택하는 것은?",
-                infoChoice : {
-                    1: "FIFO",
-                    2: "LRU",
-                    3: "LFU",
-                    4: "OPT"
-                },
-                infoAnswer : "2",
-                infoDesc : "페이지 대체 알고리즘에서 계수기를 두어 가장 오랫동안 참조되지 않은 페이지를 교체할 페이지로 선택하는 것은 LRU입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UMIX에서 네트워크 상의 문제를 진단할 수 있는 명령어는?",
-                infoChoice : {
-                    1: "ping",
-                    2: "cd",
-                    3: "pwd",
-                    4: "who"
-                },
-                infoAnswer : "1",
-                infoDesc : "네트워크에 문제가 발생한 경우 ping ip주소 또는 ping 도메인 네밍을 입력하여 현재 상태를 진단할 수 있습니다."
-            },
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "운영체제를 기능상 분류했을 경우 작업의 연속 처리를 위한 스케쥴 및 시스템 자원 할당 등을 담당하는 프로그램은?",
-                infoChoice : {
-                    1: "작업 관리 프로그램",
-                    2: "서비스 프로그램",
-                    3: "감시 프로그램",
-                    4: "데이터 관리 프로그램"
-                },
-                infoAnswer : "1",
-                infoDesc : "작업 관리 프로그램에 대한 설명입니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "운영체제의 성능 평가에 대한 설명으로 옳지 않은 것은?",
-                infoChoice : {
-                    1: "신뢰도는 시스템이 주어진 문제를 얼마나 정확하게 해결하는가를 나타내는 척도이다.",
-                    2: "사용 가능도는 시스템을 얼마나 빨리 사용할 수 있는가의 정도를 나타낸다.",
-                    3: "처리 능력은 수치가 높을수록 좋다.",
-                    4: "응답 시간으 수치가 높을수록 좋다."
-                },
-                infoAnswer : "4",
-                infoDesc : "응답 시간은 시스템에 작업을 의뢰한 시간부터 처리가 완료될 때까지 소요된 시간으로 응답 시간이 짧을수록, 즉 수치가 낮을수록 좋습니다."
-            }, 
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 중 광섬유 케이블의 손실에 해당하지 않는 것은?",
-                infoChoice : {
-                    1: "접속 손실",
-                    2: "산란 손실",
-                    3: "흡수 손실",
-                    4: "유전체 손실"
-                },
-                infoAnswer : "3",
-                infoDesc : "광섬유 케이블은 절연성이 좋은 유리를 원료로 하기 때문에 전자 유도의 영향을 받지 않습니다."
-            },
-            {
-                infoDate : "04회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "패킷 교환 방식에 대한 설명으로 옳지 않은 것은?",
-                infoChoice : {
-                    1: "통신망에 의한 패킷의 손실이 있을 수 있다.",
-                    2: "패킷의 저장 및 전송으로 이루어진다.",
-                    3: "전송 속도와 코드 변환이 가능하다.",
-                    4: "공중 데이터 교환망에서는 사용되고 있지 않다."
-                },
-                infoAnswer : "4",
-                infoDesc : "패킷 교환 방ㅅ기은 주로 공중 데이터 교환망에서 사용되고 있습니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "컴퓨터의 중앙처리장치의 구성 부분에 해당되지 않는 것은?",
-                infoChoice : {
-                    1: "레지스터",
-                    2: "연산장치",
-                    3: "보조기억장치",
-                    4: "제어장치"
-                },
-                infoAnswer : "3",
-                infoDesc : "중앙처리장치는 레지스터, 연산장치, 제어장치로 구성되어 있습니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "인터럽트 발생 시 인터럽트를 처리하고 원래 수행하고 있었던 프로그램으로 되돌아가는데 사용되는 레지스터는?",
-                infoChoice : {
-                    1: "stack",
-                    2: "PC",
-                    3: "MBR",
-                    4: "PSW"
-                },
-                infoAnswer : "1",
-                infoDesc : "인터럽트 발생 시 스택은 인터럽트를 처리하고 되돌아올 주소를 임시 보관합니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "논리회로, 가산기, 누산기, 감산기와 가장 관계있는 장치로 옳은 것은?",
-                infoChoice : {
-                    1: "입출력장치",
-                    2: "제어장치",
-                    3: "연산장치",
-                    4: "기억장치"
-                },
-                infoAnswer : "3",
-                infoDesc : "논리회로, 가산기, 누산기, 감산기는 연산장치입니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "누를 때마다 ON, OFF가 교차되는 스위치를 만들고자 할 떄 사용되는 플립플롭은?",
-                infoChoice : {
-                    1: "RS 플립플롭",
-                    2: "D 플립플롭",
-                    3: "JK 플립플롭",
-                    4: "T 플립플롭"
-                },
-                infoAnswer : "4",
-                infoDesc : "ON 일떄 스위치를 누르면 OFFㄱ 되고, OFF일떄 스위치를 누르면 ON이 된다는 것은 현재 값의 반대값, 즉 보수를 출력하는 T플립플롭에 대한 설명입니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "다음 주조지정 방법 중 처리 속도가 가장 빠른 것은?",
-                infoChoice : {
-                    1: "직접 주소지정",
-                    2: "간접 주소지정",
-                    3: "즉시 주소지정",
-                    4: "인덱스 주소지정"
-                },
-                infoAnswer : "3",
-                infoDesc : "즉시적 주소지정방식은 명령어 자체에 오펴랜드를 가지고 있는 방식으로 별도의 기억장소를 액세스하지 않고 CPU에서 곧바로 자료를 이용할 수 있어서 실행 속도가 가장 빠릅니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "컴퓨터의 채널 부분이 위치하는 곳은?",
-                infoChoice : {
-                    1: "주기억장치와 입출력장치의 중간에 위치한다.",
-                    2: "연산장치와 레지스터의 중간에 위치한다.",
-                    3: "주기억장치와 보조기억장치의 양쪽에 위치한다.",
-                    4: "주기억장치와 CPU의 중간에 위치한다."
-                },
-                infoAnswer : "1",
-                infoDesc : "채널은 주기억장치와 입출력장치의 중간에 위치합니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "한번에 1비트씩만 변화되기 때문에 기계적인 동작을 제어하기에 적합한 코드는?",
-                infoChoice : {
-                    1: "해밍 코드",
-                    2: "그레이 코드",
-                    3: "3초과 코드",
-                    4: "가중 코드"
-                },
-                infoAnswer : "2",
-                infoDesc : "한번에 1비트씩만 변화되기 때문에 기계적인 동작을 제어하기에 적합한 코드는 그레이 코드입니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "주소접근방식 중 약식주소 표현 방ㅅ기에 해당하는 것은?",
-                infoChoice : {
-                    1: "직접 주소",
-                    2: "간접 주소",
-                    3: "자료 자신",
-                    4: "계산에 의한 주소"
-                },
-                infoAnswer : "4",
-                infoDesc : "약식주소는 주소의 일부분을 생략한 것으로 계산에 의한 주소는 대부분 약식주소입니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "데이터베이스 관리 시스템의 필수 기능에 해당되지 않는 것은?",
-                infoChoice : {
-                    1: "연산 기능",
-                    2: "제어 기능",
-                    3: "조작 기능",
-                    4: "정의 기능"
-                },
-                infoAnswer : "1",
-                infoDesc : "DBMS의 필수 기능에는 정의기능, 조작기능, 제어기능이 있습니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "스프레드시트의 주요 기능과 거리가 먼 것은?",
-                infoChoice : {
-                    1: "탁상출판 기능",
-                    2: "문서 작성 기능",
-                    3: "차트 작성 기능",
-                    4: "자동 계산 기능"
-                },
-                infoAnswer : "1",
-                infoDesc : "스프레드시트 프로그램을 이용하여 간단한 문서는 작성할 수 있지만 탁상출판과 같은 전문적인 문서는 작성할 수 없습니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "테이블을 제거할 떄 사용하는 SQL명령어는?",
-                infoChoice : {
-                    1: "DELETE",
-                    2: "DROP",
-                    3: "VIEW",
-                    4: "ALTER"
-                },
-                infoAnswer : "2",
-                infoDesc : "테이블을 제거할 떄 사용하는 SQL명령어는 DROP입니다. DROP은 테이블 삭제, DELETE는 레코드 삭제라는 것은 혼동되지 않도록 합니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "3단계 스키마의 종류가 아닌 것은?",
-                infoChoice : {
-                    1: "개념 스키마",
-                    2: "외부 스키마",
-                    3: "내부 스키마",
-                    4: "관계 스키마"
-                },
-                infoAnswer : "4",
-                infoDesc : "스키마의 종류에는 개념 스키마, 외부 스키마, 내부 스키마가 있습니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "SQL에서 데이터 정의어에 해당하는 것은?",
-                infoChoice : {
-                    1: "UPDATE",
-                    2: "DELETE",
-                    3: "SELECT",
-                    4: "CREATE"
-                },
-                infoAnswer : "4",
-                infoDesc : "CREATE는 데이터 정의어이고 나머지는 모두 데이터 제어어입니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "도스에서 파일의 이름을 이름을 알파벳순으로 표시하는 명령어는?",
-                infoChoice : {
-                    1: "DIR/ON",
-                    2: "DIR/OS",
-                    3: "DIR/OA",
-                    4: "DIR/OD"
-                },
-                infoAnswer : "1",
-                infoDesc : "파일 이름을 알파벳순으로 표시한다는 것은 파일 이름을 기준으로 정렬하여 표시한다는 것으로, 정렬을 위한 옵션 'O'와 파일이름순으로 정렬하기 위한 'N' 옵션을 이용하여 DIR/ON으로 명령어를 지정하면 됩니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "윈도우에서 제어판에 있는 디스플레이 항목의 기능이 아닌 것은?",
-                infoChoice : {
-                    1: "해상도 지정",
-                    2: "배경화면 변경",
-                    3: "화면 보호 기능",
-                    4: "마우스 포인터의 모양 변경"
-                },
-                infoAnswer : "4",
-                infoDesc : "마우스 포인터의 모양은 제어판의 마우스 항목에서 변경할 수 있습니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UNIX에서 현재 작업중인 프로세스의 상태를 알아볼떄 사용하는 명령어는?",
-                infoChoice : {
-                    1: "ls",
-                    2: "chmod",
-                    3: "kill",
-                    4: "ps"
-                },
-                infoAnswer : "4",
-                infoDesc : "UNIX에서 현재 작업중인 프로세스의 상태를 알아볼떄 사용하는 명령어는 ps입니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "운영체제를 구성하는 프로그램 중 처리 프로그램에 해당하는 것은?",
-                infoChoice : {
-                    1: "감독 프로그램",
-                    2: "작업 관리 프로그램",
-                    3: "언어 번역 프로그램",
-                    4: "데이터 관리 프로그램"
-                },
-                infoAnswer : "3",
-                infoDesc : "언어 번역 프로그램은 처리 프로그램이고, 나머지는 제어 프로그램에 해당합니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "스풀링에 대한 설명으로 틀린 것은?",
-                infoChoice : {
-                    1: "프로세서와 입출력장치와의 속도 차이를 해결하여 시스템의 효율을 높이는 방법이다.",
-                    2: "스풀링의 방법은 출력장치로 직접 보내는 것이다.",
-                    3: "출력 시 출력할 데이터를 만날 때마다 디스크로 보내 저장시키는 것이다.",
-                    4: "프로그램 실행과 속도가 느린 입출력을 이원화한다."
-                },
-                infoAnswer : "1",
-                infoDesc : "스풀링은 인쇄할 내용을 출력장치로 직접 보내는 것이 아니라 먼저 하드디스크에 저장한 후 cpu의 여유시간에 틈틈이 인쇄하는 방법입니다."
-            }, 
-            {
-                infoDate : "05회",
-                infoType : "정보처리 기능사",
-                infoQuestion : "UNIX에서 CPU, 메모리, 하드디스크 등의 하드웨어를 관리하여 스케줄링, 기억장치 관리, 파일 관리, 시스템 호출 인터페이스 등의 기능을 제공하는 것은?",
-                infoChoice : {
-                    1: "커널",
-                    2: "쉘",
-                    3: "유틸리티",
-                    4: "코어"
-                },
-                infoAnswer : "1",
-                infoDesc : "커널에 관한 설명입니다."
-            }, 
-
-             
-            
-
- 
+                infoDate: "2006년 5회",
+                infoType: "정보처리 기능사",
+                infoQuestion: "이항(binary) 연산에 해당하는 것은?",
+                infoChoice: {
+                    1: "COMPLEMENT",
+                    2: "AND",
+                    3: "ROTATE",
+                    4: "SHIFT"
+                },
+                infoAnswer: "2",
+                infoDesc: "단항연산 : ROTATE, SHIFT, MOVE, NOT(COMPLEMENT)"
+            }, {
+                infoDate: "2006년 5회",
+                infoType: "정보처리 기능사",
+                infoQuestion: "프로그램이 컴퓨터의 기종에 관계없이 수행될 수 있는 성질을 의미하는 것은?",
+                infoChoice: {
+                    1: "가용성",
+                    2: "신뢰성",
+                    3: "호환성",
+                    4: "안전성"
+                },
+                infoAnswer: "3",
+                infoDesc: "컴퓨터의 기종에 관계없이 동작하므로 호환성입니다. 호환성이란 까스활명수, 까스명수, 베아제등 이름은 틀리지만 소화제의 기능을 하는것처럼 기종에 관계없이 동작할수 있는 것들을 말합니다."
+            }, {
+                infoDate: "2006년 5회",
+                infoType: "정보처리 기능사",
+                infoQuestion: "제어장치가 앞의 명령 실행을 완료한 후, 다음에 실행 할 명령을 기억장치로부터 가져오는 동작을 완료할 때까지의 주기를 무엇이라고 하는가?",
+                infoChoice: {
+                    1: "fetch cycle",
+                    2: "transfer cycle",
+                    3: "search time",
+                    4: "run time"
+                },
+                infoAnswer: "1",
+                infoDesc: "명령어를 가지고 오는것을 fetch cycle 이라고 합니다."
+            }
         ];
+
 
         // 문제 출력
         const updateQuiz = () => {
@@ -1385,19 +110,20 @@
                             <div class="quiz__question">${index+1}. ${quiz.infoQuestion}</div>
                             <div class="quiz__choice">
                                 <label for="choice1-${index}">
-                                    <input type="radio" id="choice1-${index}" name="choice${index}" value="1">
+                                    <input type="radio" id="choice1-${index}" name="choice-${index}" value="1">
                                     <span>${quiz.infoChoice[1]}</span>
                                 </label>
                                 <label for="choice2-${index}">
-                                    <input type="radio" id="choice2-${index}" name="choice${index}" value="2">
+                                    <input type="radio" id="choice2-${index}" name="choice-${index}" value="2">
                                     <span>${quiz.infoChoice[2]}</span>
                                 </label>
                                 <label for="choice3-${index}">
-                                    <input type="radio" id="choice3-${index}" name="choice${index}" value="3">
+                                    <input type="radio" id="choice3-${index}" name="choice-${index}" value="3">
                                     <span>${quiz.infoChoice[3]}</span>
+
                                 </label>
                                 <label for="choice4-${index}">
-                                    <input type="radio" id="choice4-${index}" name="choice${index}" value="4">
+                                    <input type="radio" id="choice4-${index}" name="choice-${index}" value="4">
                                     <span>${quiz.infoChoice[4]}</span>
                                 </label>
                             </div>
@@ -1405,52 +131,55 @@
                             <div class="quiz__desc none">${quiz.infoDesc}</div>
                         </div>
                         <div class="quiz__footer">
-                            <button class="quiz__confirm">정답 확인하기</button>
+                            <button class="quiz__confirm" data-index="${index}">정답 확인하기</button>
                         </div>
                     </div>
                 `);
+
             });
+            quizWrap.innerHTML = quizArray.join("");
+        };
 
-            quizWrap.innerHTML = quizArray.join(" ");
-        }
-
-        updateQuiz();
 
         // 정답 확인
         const answerQuiz = (index) => {
-            const quizChoices = document.querySelectorAll(`.quiz__choice input[name="choice${index}"]:checked`);
-            const answerElement = quizWrap.querySelectorAll(".quiz__answer")[index];
-            const descElement = quizWrap.querySelectorAll(".quiz__desc")[index];
+            const quizChoices = quizWrap.querySelectorAll(`.quiz__choice input[name="choice-${index}"]:checked`);
             const quizElement = quizWrap.querySelectorAll(".quiz")[index];
+            const descElement = quizWrap.querySelectorAll(".quiz__desc")[index];
+            const answerElement = quizWrap.querySelectorAll(".quiz__answer")[index];
+            const confirmElement = quizWrap.querySelectorAll(".quiz__confirm")[index];
 
-            if (quizChoices.length > 0) {
-                const userAnswer = quizChoices[0].value;
+            if (quizChoices.length > 0){                   
+                const userAnswer = quizChoices[0].value;        // 사용자가 체크한 정답
 
-                if (userAnswer === quizInfo[index].infoAnswer) {
-                    answerElement.textContent = "정답입니다!";
-                    quizElement.classList.add("good");
-                    totalScore++;
-                    quizScore.innerHTML = totalScore;
+                if (userAnswer === quizInfo[index].infoAnswer){
+                    quizElement.classList.add("good");          // O 표시
+                    descElement.classList.remove("none");       // 해설 보기
                 } else {
-                    answerElement.textContent = "오답입니다!";
-                    quizElement.classList.add("bad");
-                    descElement.classList.remove("none");
+                    quizElement.classList.add("bad");           // X 표시
+                    descElement.classList.remove("none");       // 해설 보기
+                    answerElement.classList.remove("none");     // 정답 보기
+                };
+
+                confirmElement.classList.add("none");       // 정답 확인 버튼 삭제
+
+                } else {
+                    alert("보기를 선택해주세요!");
                 }
-            }
-        }
+        };
 
         // 페이지가 로드된 후 실행
         document.addEventListener("DOMContentLoaded", () => {
             updateQuiz();
 
-            const confirmButtons = document.querySelectorAll(".quiz__confirm");
-            confirmButtons.forEach((button, index) => {
+            const quizConfirm = document.querySelectorAll(".quiz__confirm");
+
+            quizConfirm.forEach((button, index) => {
                 button.addEventListener("click", () => {
                     answerQuiz(index);
                 });
             });
         });
-
 
     </script>
 </body>

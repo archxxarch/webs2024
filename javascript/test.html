@@ -4,87 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        table {
-            width: 100%;
-            border-top: 1px solid #dcdcdc;
-            border-spacing: 0;
-        }
-        table td {
-            border-bottom: 1px solid #dcdcdc;
-
-        }
-    </style>
 </head>
 <body>
     <script>
+        // 1~9까지의 합 구하기
+        const aaa = [10,20,30,40,50,60,70,80,90];
 
-    </script>
-    <script>
-        // 50칸 테이블(5/10)(1-50)
+        // for()
         {
-            let num = 1;
-            let table = "<table class='table'>";
-
-            for(let i=1; i<=10; i++){
-                table += "<tr>";
-
-                for(let j=1; j<=5; j++){
-                    table += "<td>" + num + "</td>";
-                    num++;
-                }
-
-                table += "</tr>";
+            let sum = 0;
+            for(let i=0; i<=aaa[i]; i++){
+                sum += aaa[i];
             }
-
-            table += "</table>";
-
-            document.write(table);
+            console.log(sum);
         }
 
-        // 짝수
+        // forEach
         {
-            let num = 2;
-            let table = "<table class='table'>";
-
-            for(let i=1; i<=10; i++){
-                table += "<tr>";
-
-                for(let j=1; j<=5; j++){
-                    table += "<td>" + num + "</td>";
-                    num += 2;
-                }
-
-                table += "</tr>";
-            }
-
-            table += "</table>";
-
-            document.write(table);
+            let sum = 0;
+            aaa.forEach((el) => {
+                sum += el;
+            })
+            console.log(sum);
         }
 
-        // 3의 배수
+        //for of
         {
-            let num = 3;
-
-            let table = "<table class='table'>";
-
-            for(let i=1; i<=10; i++){
-                table += "<tr>";
-
-                for(let j=1; j<=5; j++){
-                    table += "<td>" + num + "</td>";
-                    num += 3;
-                }
-
-                table += "</tr>";
+            let sum = 0;
+            for(let el of aaa){
+                sum += el;
             }
-
-            table += "</table>";
-
-            document.write(table);
+            console.log(sum);
         }
+
+        //for in
+        {
+            let sum = 0;
+            for(let el in aaa){
+                sum += aaa[el];
+            }
+            console.log(sum);
+
+        }
+
+        // map()
+        {
+            let sum = 0;
+            aaa.map((el) => {
+                sum += el;
+            })
+            console.log(sum);
+        }
+
+        // filter()
+        {
+            let sum = 0;
+            aaa.filter((el) => {
+                sum += el;
+            })
+            console.log(sum);
+        }
+
     </script>
 </body>
 </html>
