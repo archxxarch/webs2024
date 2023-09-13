@@ -84,6 +84,7 @@
     }
     .header__logo img {
         width: 120px;
+        padding-top: 5px;
     }
 }
 
@@ -160,16 +161,18 @@
 @media (max-width: 1290px){
     .slider__inner > .slider {
         width: 100%;
-        padding: 100px 16px;
+        padding: 80px 16px;
     }
     .slider__text h3 {
         font-size: 5vw;
+        padding: 0 40px;
+        word-break: keep-all;
     }
 }
 @media (max-width: 800px){
     .slider__inner > .slider {
         background-size: 60%;
-        background-position: center bottom 50px;
+        background-position: center bottom 80px;
     }
     .slider__text h3 {
         text-align: center;
@@ -182,7 +185,7 @@
     }
     .slider__dot {
         position: absolute;
-        bottom: 30px;
+        bottom: 60px;
         left: 50%;
         transform: translateX(-50%);
     }
