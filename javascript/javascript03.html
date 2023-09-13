@@ -643,7 +643,9 @@
 }
 </code></pre>
                     <p class="desc">
-                        
+                        function Func(num, str) : Func라는 이름의 객체 생성자 함수를 정의합니다. 이 함수는 두 개의 매개변수 num과 str을 받습니다.<br>
+                        his.num = num;, this.str = str; :  함수 내에서 this 키워드를 사용하여 객체의 속성 num과 str을 정의하고, 매개변수로 전달된 값들을 할당합니다.<br>
+                        Func.prototype.result = function() { console.log(${this.num}. ${this.str}); } : Func 생성자 함수의 프로토타입 객체(prototype)에 result 메서드를 추가합니다. 이 메서드는 객체 생성자 함수로부터 생성된 모든 객체에서 공유됩니다. result 메서드는 객체의 num과 str 속성을 활용하여 문자열을 출력하는 역할을 합니다.
                     </p>
                     <div class="result">
                         <details>
@@ -659,7 +661,7 @@
 
                 <div id="sample19" class="sample">
                     <h3>19. 함수 유형 : 객체 리터럴 함수</h3>
-                    <p></p>
+                    <p>객체 리터럴 함수(Object Literal Function)는 객체를 생성하는 간단하고 직접적인 방법 중 하나입니다. 객체 리터럴 함수를 사용하면 객체를 선언하고 초기화할 수 있으며, 객체의 속성과 메서드를 정의할 수 있습니다. 이 함수는 객체의 틀을 정의하는 역할을 합니다.</p>
 <pre><code class="language-js">{
     function Func(num, str){
         this.num = num;
@@ -683,7 +685,9 @@
 }
 </code></pre>
                     <p class="desc">
-                        
+                        function Func(num, str) : Func라는 이름의 객체 생성자 함수를 정의합니다. 이 함수는 두 개의 매개변수 num과 str을 받습니다.<br>
+                        this.num = num, ;this.str = str; : 함수 내에서 this 키워드를 사용하여 객체의 속성 num과 str을 정의하고, 매개변수로 전달된 값들을 할당합니다.<br>
+                        Func.prototype = { result1: function() { /* ... */ }, result2: function() { /* ... */ } } : Func 생성자 함수의 프로토타입 객체(prototype)에 객체 리터럴을 사용하여 result1 및 result2 두 개의 메서드를 정의합니다.
                     </p>
                     <div class="result">
                         <details>
