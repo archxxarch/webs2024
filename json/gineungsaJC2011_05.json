@@ -17,7 +17,7 @@
         "incorrect_answers": [
             "operand",
             "length",
-            "question mark"
+            "question mark" 
         ],
         "desc": "명령어의 구성명령어 코드부 + 주소부 (한글),<br> OP-code + Operand (영문)"
     },

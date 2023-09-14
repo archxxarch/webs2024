@@ -5,7 +5,7 @@
         "incorrect_answers": [
             "프로그램에 의한 입출력(Programmed I/O)",
             "인터럽트에 의한 입출력(interrupt driven I/O)",
-            "채널 제어기에 의한 입출력",
+            "채널 제어기에 의한 입출력"
         ],
         "correct_answer": "DMA(Direct Memory Access)",
         "desc": "다이렉트 메모리 엑세스의 약자로 CPU를 통하지 않고 입출력 장치와 기억장치간에 데이터를 주고 받는 방식을 말한다."
@@ -75,8 +75,7 @@
             "묵시 주소(implied address)"
         ],
         "correct_answer": "간접 주소(indirect address)",
-        "desc": "묵(0) - 즉(0) - 직(1) - 간(2) 위 괄호속의 내용은 메모리 참조 횟수를 뜻합니다. 문제에서 2회 메모리 참조를 하므로 간접방식입니다.",
-        "question_img": ,
+        "desc": "묵(0) - 즉(0) - 직(1) - 간(2) 위 괄호속의 내용은 메모리 참조 횟수를 뜻합니다. 문제에서 2회 메모리 참조를 하므로 간접방식입니다."
     },
     {
         "subject": "정보 처리 기능사",
@@ -87,8 +86,7 @@
             "AC+C+A"
         ],
         "correct_answer": "(A+b).C",
-        "desc": "A OR B C' 위 두 신호가 AND 됩니다.",
-        "question_img": ,
+        "desc": "A OR B C' 위 두 신호가 AND 됩니다."
     },
     {
         "subject": "정보 처리 기능사",
@@ -177,8 +175,7 @@
             "A = 1, B = 0"
         ],
         "correct_answer": "A = 1, B = 1",
-        "desc": "위 그림에서 A, B 모두 연결되어야 전구에 불이 들어 오므로, 둘다 참이어야 합니다. AND 회로를 나타내는 것입니다.",
-        "question_img": ,
+        "desc": "위 그림에서 A, B 모두 연결되어야 전구에 불이 들어 오므로, 둘다 참이어야 합니다. AND 회로를 나타내는 것입니다."
     },
     {
         "subject": "정보 처리 기능사",
