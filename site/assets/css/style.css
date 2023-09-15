@@ -10,7 +10,7 @@
 .header__nav ul {
     display: flex;
 }
-.header__nav li a {
+.header__nav li a { 
     width: 120px;
     height: 40px;
     line-height: 40px;
@@ -195,7 +195,7 @@
         background-size: 340px;
     }
 }
-/* _____________________intro_____________________ */
+/* _____________________ intro _____________________ */
 .intro__inner {
     padding: 100px 0;
     overflow: hidden;
@@ -309,5 +309,104 @@
     }
     .intro__img .img3 img {
         width: 100%;
+    }
+}
+
+/* _____________________ pointUse _____________________ */
+#pointUse {
+    background-color: #f8f8f8;
+}
+.use__inner {
+    padding: 100px 0;
+}
+.use__title {
+    margin-bottom: 40px;
+}
+.use__title h3 {
+    font-size: 45px;
+    font-weight: 800;
+}
+.use__title h3 em {
+    font-weight: 400;
+}
+.use__title h3 span {
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+}
+.use__img {
+    display: flex;
+    justify-content: space-between;
+}
+.use__img > div {
+    width: 32%;
+    text-align: center;
+}
+.use__img > div figure {
+    width: 100%;
+    position: relative;
+}
+.use__img > div figure {
+    border-radius: 20px;
+
+}
+.use__img > div figure::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #acacac4e;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+.use__img > div figcaption {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #fff;
+    z-index: 100;
+    font-weight: 800;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+.use__img > div figure:hover::after {
+    opacity: 1;
+}
+.use__img > div figure:hover figcaption {
+    opacity: 1;
+}
+.use__img > div p {
+    padding: 10px;
+    color: #6d6d6d;
+    font-size: 16px;
+}
+
+@media (max-width: 800px){
+    .use__inner {
+        padding: 80px 0;
+    }
+    .use__title h3 {
+        font-size: 34px;
+        text-align: center;
+    }
+    .use__title h3 span {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    .use__img {
+        flex-direction: column;
+    }
+    .use__img > div {
+        width: 60%;
+        margin: 0 auto;
     }
 }
