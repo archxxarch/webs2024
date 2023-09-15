@@ -115,7 +115,7 @@
 }
 .slider__text p {
     color: #fff;
-    font-style: 20px;
+    font-size: 20px;
     line-height: 1.4;
     margin-bottom: 50px;
 }
@@ -328,11 +328,11 @@
     font-weight: 800;
 }
 .use__title h3 em {
-    font-weight: 400;
+    font-weight: 300;
 }
 .use__title h3 span {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     color: #333;
 }
 .use__img {
