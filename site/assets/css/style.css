@@ -832,7 +832,7 @@ footer__info li a:hover {
         display: block;
         line-height: 1.7;
     }
-    .footer__info li:first-child {
+    .footer__info ul:first-child {
         margin-bottom: 20px;
     }
     .footer__sns ul {
