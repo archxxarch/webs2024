@@ -17,7 +17,12 @@
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-</head> 
+
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+
+</head>
 
 <body>
     <div id="skip">
@@ -33,7 +38,7 @@
                     <img src="assets/img/W.Point.svg" alt="W.Point">
                 </a>
             </h1>
-            <nav class="header__nav" role="navigation" aria-label="Main"> 
+            <nav class="header__nav" role="navigation" aria-label="Main">
                 <ul>
                     <li class="active"><a href="#">소개</a></li>
                     <li><a href="#">쌓기</a></li>
@@ -54,7 +59,38 @@
 
     <main id="main" role="main">
         <section id="sliderWrap">
-            <div class="slider__inner">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slider__text">
+                            <h3>현대백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
+                            <p>다양한 브랜드에서 적립하고 사용하는<br />즐거운 일상의 포인트 제도</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slider__text">
+                            <h3>현대백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
+                            <p>다양한 브랜드에서 적립하고 사용하는<br />즐거운 일상의 포인트 제도</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slider__text">
+                            <h3>현대백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
+                            <p>다양한 브랜드에서 적립하고 사용하는<br />즐거운 일상의 포인트 제도</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <div class="swiper-button">
+                    <div class="swiper-button-play"></div>
+                    <div class="swiper-button-stop"></div>
+                </div>
+            </div>
+
+            <!-- <div class="slider__inner">
                 <div class="slider">
                     <div class="slider__text">
                         <h3>현대백화점그룹의<br /><em>다양한 제휴사</em>를 만나보세요!</h3>
@@ -72,7 +108,7 @@
                         <a href="#" class="right"><span class="ir">다음이미지</span></a>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </section>
         <!-- sliderWrap -->
 
@@ -189,7 +225,7 @@
                     <div class="img">
                         <img src="assets/img/download01.png" alt="h.point">
                     </div>
-                    <div class="btn">                    
+                    <div class="btn">
                         <a href="#">앱다운로드 바로가기</a>
                     </div>
                 </div>
@@ -206,6 +242,33 @@
     <footer id="footer" role="contentinfo">
         <h2>푸터</h2>
     </footer>
-</body>
 
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        let swiper = new Swiper(".swiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            centeredSlides: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        const btnStop = document.querySelector(".swiper-button-stop");
+        const btnStart = document.querySelector(".swiper-button-play");
+
+        btnStop.addEventListener("click", () => {
+            
+        });
+    </script>
+
+</body>
 </html>
