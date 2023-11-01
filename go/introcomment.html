@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 댓글</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../go/asset/css/join.css">
+    <link rel="stylesheet" href="../go/asset/css/style.css">
+    <link rel="stylesheet" href="../go/asset/css/fonts.css">
+    <link rel="stylesheet" href="../go/asset/css/introcomment.css">
+
+    <link href="https://webfontworld.github.io/LotteriaDdag/LotteriaDdag.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="header_wrap">
+            <h1 class="logo">
+                <a href="index.html"><img src="asset/img/Go교복.png" alt=""></a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#">교복소개</a></li>
+                    <li><a href="#">인기순위</a></li>
+                    <li><a href="#">수다방</a></li>
+                    <li><a href="#">LOGIN</a>/<a href="#">JOIN</a></li>
+                </ul>
+            </nav>
+            <div class="header__ham">
+                <a href="#">
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="container">
+            <div class="cont__top">댓글</div>
+
+            <div class="cont__comment__list" id="commentList">
+                <div class="profile"><img src="asset/img/profile.png" alt="profile"></div>
+                <div class="comment">
+                    <div class="comment__top">
+                        <div class="comment__id">wlqwhaqhsownffo</div>
+                        <div class="comment__date">1일</div>
+                    </div>
+                    <div class="comment__cont">생각만 해도 재밋을거 같음</div>
+                    <div class="comment__likecount">좋아요 0개</div>
+                </div>
+                <div class="heart" id="heart"><img src="asset/img/heart.png" alt="heart"></div>
+            </div>
+            
+
+            <div class="cont__comment">                      
+                <div class="emotion">
+                    <p class="cont__comment__emotion">❤️</p>
+                    <p class="cont__comment__emotion">🙌</p>
+                    <p class="cont__comment__emotion">🔥</p>
+                    <p class="cont__comment__emotion">👏</p>
+                    <p class="cont__comment__emotion">😥</p>
+                    <p class="cont__comment__emotion">😍</p>
+                    <p class="cont__comment__emotion">😯</p>
+                    <p class="cont__comment__emotion">😂</p>
+                </div>
+                <div class="cont__comment__write">
+                    <div class="profile"><img src="asset/img/profile.png" alt="profile"></div>
+                    <div class="write">
+                        <input type="text" id="commentInput" placeholder="wlqwhaqhsownffo(으)로 댓글 달기...">
+                        <button>게시</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 좋아요 버튼을 클릭했을 때 좋아요 갯수를 증가시키는 함수
+        document.querySelector(".heart").addEventListener("click", function () {
+            const likeCount = document.querySelector(".comment__likecount");
+            const currentLikes = parseInt(likeCount.textContent.split(" ")[1]); // 현재 좋아요 갯수 추출
+
+            // 좋아요 갯수 증가 및 업데이트
+            likeCount.textContent = `좋아요 ${currentLikes + 1}개`;
+        });
+
+
+        // 클릭한 상태를 추적할 변수
+        let isLiked = false;
+
+        // 좋아요 버튼을 클릭했을 때 이미지 교체 함수
+        document.querySelector("#heart").addEventListener("click", function () {
+            const heartImage = document.querySelector("#heart img");
+
+            // 이미지 교체 및 상태 업데이트
+            if (!isLiked) {
+                heartImage.src = "asset/img/heartred.png"; // 다른 이미지로 교체
+                isLiked = true;
+            } 
+        });
+    </script>
+</body>
+</html>

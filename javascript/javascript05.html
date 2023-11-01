@@ -82,6 +82,29 @@
             <!-- //main__menu -->
 
             <div class="main__sample">
+                <div id="s22" class="sample">
+                    <h3>22. string.prototype.split()</h3>
+                    <p>split() 메서드는 String 객체를 지정한 구분자를 이용하여 여러 개의 문자열로 나눕니다.</p>
+<pre><code class="language-js">{
+const str = 'The quick brown fox jumps over the lazy dog.';
+
+const words = str.split(' ');
+console.log(words[3]);
+// Expected output: "fox"
+
+const chars = str.split('');
+console.log(chars[8]);
+// Expected output: "k"
+
+const strCopy = str.split();
+console.log(strCopy);
+// Expected output: Array ["The quick brown fox jumps over the lazy dog."]
+    Expected output: "the quick brown fox jumps over the lazy dog."
+}
+</code></pre>
+                    <!-- <p class="desc"></p> -->
+                </div>
+                <!-- // s22-->
 
                 <div id="s27" class="sample">
                     <h3>27. string.prototype.toLowerCase()</h3>

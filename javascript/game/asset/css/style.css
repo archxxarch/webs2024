@@ -1,0 +1,89 @@
+#wrap {
+    width: 100%;
+    height: 100vh;
+    font-family: 'SF Pro Display', 'Noto Sans KR', 'sans-serif';
+}
+
+
+.bg01 {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+}
+
+
+.wallpaper {
+    background-image: url(../img/phonebg.jpg);
+}
+
+.container {
+    background-image: url(../img/phone.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 370px;
+    height: 750px;
+    z-index: 1000;
+    position: relative;
+}
+.icon_music {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 10rem;
+    left: 20rem;
+}
+#header nav img {
+    width: 100px;
+    position: absolute;
+    top: 55px;
+    right: 65px;
+}
+
+/* musicWrap */
+#musicWrap {
+    position: absolute;
+    right: 43px;
+    top: 85px;
+    width: 415px;
+    height: 780px;
+    background: linear-gradient(to top, #ffffff, #FF9AFF);
+
+    /* border: 2px solid #ffffff; */
+    /* border-radius: 50px; */
+}
+.music_inner .music_header {
+}
+.music_inner .music_header h2 {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 2rem;
+    padding: 8px 100px;
+    color: #000;
+    border-bottom: 1px solid #000;
+
+}
+.music_contents .music_view {
+
+}
+.music_contents .music_view img{
+    position: absolute;
+    top: 3rem;
+    padding: 2rem;
+}
+#footer {
+}
+#footer p {
+    position: absolute;
+    background-image: url(../img/image\ 66.jpg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 330px;
+    height: 112px;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+}

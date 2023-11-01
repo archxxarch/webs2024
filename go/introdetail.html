@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 상세</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../go/asset/css/join.css">
+    <link rel="stylesheet" href="../go/asset/css/style.css">
+    <link rel="stylesheet" href="../go/asset/css/fonts.css">
+    <link rel="stylesheet" href="../go/asset/css/introdetail.css">
+
+    <link href="https://webfontworld.github.io/LotteriaDdag/LotteriaDdag.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="header_wrap">
+            <h1 class="logo">
+                <a href="index.html"><img src="asset/img/Go교복.png" alt=""></a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#">교복소개</a></li>
+                    <li><a href="#">인기순위</a></li>
+                    <li><a href="#">수다방</a></li>
+                    <li><a href="#">LOGIN</a>/<a href="#">JOIN</a></li>
+                </ul>
+            </nav>
+            <div class="header__ham">
+                <a href="#">
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="container">
+            <div class="cont__top">
+                <div class="cont__top__profile">
+                    <img src="asset/img/profile.png" alt="">
+                </div>
+                <div class="cont__top__desc">한림예술고등학교 <p>서울시</p>
+                </div>
+            </div>
+            <div class="cont__mid">
+                <div class="image-slider">
+                    <div class="slide">
+                        <img src="asset/img/개포고춘.jpg" alt="Image 1">
+                    </div>
+                    <div class="slide">
+                        <img src="asset/img/개포고하남.jpg" alt="Image 2">
+                    </div>
+                    <div class="slide">
+                        <img src="asset/img/개포고하여.jpg" alt="Image 3">
+                    </div>
+                    <!-- Add more slides as needed -->
+                </div>
+                <div class="controls">
+                    <button class="control-button active"></button>
+                    <button class="control-button"></button>
+                    <button class="control-button"></button>
+                </div>
+
+
+            </div>
+            <div class="cont__bottom">
+                <div class="cont__bottom1">
+                    <div class="cont__bottom__like">
+                        <img id="goodImage" class="like-button" src="asset/img/good.png" alt="good">
+                        <p id="likeCount">0</p>
+                    </div>
+                    <div class="cont__bottom__dislike">
+                        <img id="badImage" src="asset/img/bad.png" alt="bad">
+                        <p id="dislikeCount">0</p>
+                    </div>
+                    <div class="cont__bottom__comment">
+                        <a href="../go/introcomment.html"><img src="asset/img/comment.png" alt="comment"></a>
+                    </div>
+                </div>
+                <div class="cont__bottom__view">65,445 views</div>
+                <div class="cont__bottom__desc">
+                    <em>한림예술고등학교</em>
+                    <p>#동복 #하복 #체육복</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const buttons = document.querySelectorAll('.control-button');
+
+        let currentSlide = 0;
+
+        slides[currentSlide].style.display = 'block';
+        buttons[currentSlide].classList.add('active');
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                slides[currentSlide].style.display = 'none';
+                buttons[currentSlide].classList.remove('active');
+
+                currentSlide = index;
+                slides[currentSlide].style.display = 'block';
+                buttons[currentSlide].classList.add('active');
+            });
+        });
+
+        // 좋아요 싫어요 수
+        const goodImage = document.getElementById('goodImage');
+        const badImage = document.getElementById('badImage');
+        const likeCount = document.getElementById('likeCount');
+        const dislikeCount = document.getElementById('dislikeCount');
+
+        let likes = parseInt(likeCount.textContent);
+        let dislikes = parseInt(dislikeCount.textContent);
+
+        goodImage.addEventListener('click', () => {
+            likes++;
+            likeCount.textContent = likes;
+        });
+
+        badImage.addEventListener('click', () => {
+            dislikes++;
+            dislikeCount.textContent = dislikes;
+        });
+
+        // good 이미지 (색상) 변경
+        const newGoodImageSrc = 'asset/img/goodblue.png';
+
+        goodImage.addEventListener('click', () => {
+            goodImage.src = newGoodImageSrc;
+        });
+
+        // 좋아요 버튼 클릭 이벤트 처리
+        goodImage.addEventListener('click', () => {
+            // body 요소에 "liked" 클래스를 추가하여 배경색을 변경
+            document.body.classList.toggle('liked');
+        });
+    </script>
+</body>
+</html>

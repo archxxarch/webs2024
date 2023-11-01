@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="gray">
+    <div id="skip">
+        <a href="#header">헤더 영역 바로가기</a>
+        <a href="#main">콘텐츠 영역 바로가기</a>
+        <a href="#footer">푸터 영역 바로가기</a>
+    </div>
+
+    <header id="header" role="banner">
+        <div class="header__inner container">
+            <div class="left">
+                <a href="/">
+                    <span class="blind">메인으로</span>
+                </a>
+            </div>
+            <div class="logo">
+                <a href="main.html">Developer Blog</a>
+            </div>
+            <div class="right">
+                <li><a href="join.html">회원가입</a></li>
+            </div>
+        </div>
+        <nav class="nav__inner">
+            <ul>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">게시판</a></li>
+                <li><a href="#">블로그</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main" role="main">
+        <div class="intro__inner bmStyle container">
+            <div class="intro__img">
+                <img srcset="../assets/img/astronaut.jpg 1x, ../assets/img/astronaut@2x.jpg 2x, ../assets/img/astronaut@3x.jpg 3x"  alt="소개 이미지">
+            </div>
+            <div class="intro__text">
+                I'm Astronaut.<br>
+                Welcome to my SPACE.
+            </div>
+        </div>
+        <!-- // intro_inner -->
+
+        <section class="card__wrap bmStyle2 container">
+            <h2>SPACE topic</h2>
+            <div class="card__inner column4">
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog24.jpg 1x, ../assets/img/blog24@2x.jpg 2x, ../assets/img/blog24@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>우주에서 가장 빠르게 회전하는 물체?</span></h3>
+                        <p class="line3">중성자별이다. 중성자별은 1초에 700번까지 회전할 수 있는데 별의 핵이 중력붕괴된다. 그렇게 되면서 좁은 공간 안에 어마어마한 중력을 만들어 내고, 양성자와 전자가 서로 혼합되면서 매우 빠르게 회전하게 된다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog02.jpg 1x, ../assets/img/blog02@2x.jpg 2x, ../assets/img/blog02@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>우주를 구성하는 물질은?</span></h3>
+                        <p class="line3">2003년, 나사에서는 인공위성을 통해 우주가 탄생(빅뱅)할 때 나온 '우주배경복사'를 발견했는데 연구 결과는 충격적이다. 우주는 의외로 텅 빈 공간이라는 것.
+                            또한, 전 우주에 4%만이 눈에 보이는 물질(원자)이고나머지 73%는 '암흑 에너지(다른 말로 진공에너지)'였으며 23%는 '암흑 물질'이었다. 즉, 우주는 눈에 보이는 것보다 보이지 않는 것이 훨씬 더 많은 세계다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog03.jpg 1x, ../assets/img/blog03@2x.jpg 2x, ../assets/img/blog03@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>밤하늘을 바라보는 것은 '과거'를 보는 것과 같다.</span></h3>
+                        <p class="line3">우주의 공간은 매우 넓기 때문에 태양계와 가장 가까운 별인 '알파 센타우리'까지 가기 위해서는 지구에서 약 4광년이나 걸린다.
+                            우리가 4광년 떨어진 알파 센터우리를 본다는 것은 '4년 전'에 이 별이 보낸 빛을 현재의 우리가 보는 것과 같다. 즉, 우리가 보는 것은 모든 별의 과거 모습이라는 것</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog10.jpg 1x, ../assets/img/blog10@2x.jpg 2x, ../assets/img/blog10@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>우주에는 우리뿐일까?</span></h3>
+                        <p class="line3">나는 우주에 또 다른 생명체가 존재하리라 생각한다. 그것은 우리의 과거, 미래일 수도 있고 완전히 다른 생명체일 수도 있다.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="card__more"><span class="ir">더보기</span></a>
+        </section>
+        <!-- //card__wrap -->
+
+        <section class="card__wrap bmStyle2 container">
+            <h2>ASTRONOMY topic</h2>
+            <div class="card__inner column3">
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog17.jpg 1x, ../assets/img/blog17@2x.jpg 2x, ../assets/img/blog17@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>우주를 구성하는 물질은?</span></h3>
+                        <p class="line3">2003년, 나사에서는 인공위성을 통해 우주가 탄생(빅뱅)할 때 나온 '우주배경복사'를 발견했는데 연구 결과는 충격적이다. 우주는 의외로 텅 빈 공간이라는 것.
+                            또한, 전 우주에 4%만이 눈에 보이는 물질(원자)이고나머지 73%는 '암흑 에너지(다른 말로 진공에너지)'였으며 23%는 '암흑 물질'이었다. 즉, 우주는 눈에 보이는 것보다 보이지 않는 것이 훨씬 더 많은 세계다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog04.jpg 1x, ../assets/img/blog04@2x.jpg 2x, ../assets/img/blog04@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">디자인보다 개발이 좋은 이유는 딱 정해져 있다. 연봉이 높다. 그게 이유다 다른 이유가 필요한가! </p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog01.jpg 1x, ../assets/img/blog01@2x.jpg 2x, ../assets/img/blog01@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">디자인보다 개발이 좋은 이유는 딱 정해져 있다. 연봉이 높다. 그게 이유다 다른 이유가 필요한가! </p>
+                    </div>
+                </div>
+
+                
+            </div>
+            <a href="#" class="card__more"><span class="ir">더보기</span></a>
+        </section>
+        <!-- //card__wrap -->
+
+        <section class="card__wrap bmStyle2 container">
+            <h2>SPACESHIP topic</h2>
+            <div class="card__inner column2">
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog21.jpg 1x, ../assets/img/blog21@2x.jpg 2x, ../assets/img/blog21@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog22.jpg 1x, ../assets/img/blog22@2x.jpg 2x, ../assets/img/blog22@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">디자인보다 개발이 좋은 이유는 딱 정해져 있다. 연봉이 높다. 그게 이유다 다른 이유가 필요한가! </p>
+                    </div>
+                </div>
+
+
+                
+            </div>
+            <a href="#" class="card__more"><span class="ir">더보기</span></a>
+        </section>
+        <!-- //card__wrap -->
+
+        <section class="card__wrap bmStyle2 container">
+            <h2>UNIVERSE topic</h2>
+            <div class="card__inner column6">
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog16.jpg 1x, ../assets/img/blog16@2x.jpg 2x, ../assets/img/blog16@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog19.jpg 1x, ../assets/img/blog19@2x.jpg 2x, ../assets/img/blog19@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">디자인보다 개발이 좋은 이유는 딱 정해져 있다. 연봉이 높다. 그게 이유다 다른 이유가 필요한가! </p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog05.jpg 1x, ../assets/img/blog05@2x.jpg 2x, ../assets/img/blog05@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog13.jpg 1x, ../assets/img/blog13@2x.jpg 2x, ../assets/img/blog13@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">디자인보다 개발이 좋은 이유는 딱 정해져 있다. 연봉이 높다. 그게 이유다 다른 이유가 필요한가! </p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog18.jpg 1x, ../assets/img/blog18@2x.jpg 2x, ../assets/img/blog18@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog15.jpg 1x, ../assets/img/blog15@2x.jpg 2x, ../assets/img/blog15@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                
+            </div>
+            <a href="#" class="card__more"><span class="ir">더보기</span></a>
+        </section>
+        <!-- //card__wrap -->
+
+        <section class="card__wrap container">
+            <h2>COSMOS topic</h2>
+            <div class="card__inner column1">
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog14.jpg 1x, ../assets/img/blog14@2x.jpg 2x, ../assets/img/blog14@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다. 디자인보다 개발이 좋은 이유는 단 열가지나 있다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog11.jpg 1x, ../assets/img/blog11@2x.jpg 2x, ../assets/img/blog11@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">디자인보다 개발이 좋은 이유는 딱 정해져 있다. 연봉이 높다. 그게 이유다 다른 이유가 필요한가! </p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog23.jpg 1x, ../assets/img/blog23@2x.jpg 2x, ../assets/img/blog23@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog12.jpg 1x, ../assets/img/blog12@2x.jpg 2x, ../assets/img/blog12@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">디자인보다 개발이 좋은 이유는 딱 정해져 있다. 연봉이 높다. 그게 이유다 다른 이유가 필요한가! </p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog25.jpg 1x, ../assets/img/blog25@2x.jpg 2x, ../assets/img/blog25@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <figure>
+                        <img srcset="../assets/img/blog26.jpg 1x, ../assets/img/blog26@2x.jpg 2x, ../assets/img/blog26@3x.jpg 3x," alt="">
+                        <a href="#" class="go" title="컨텐츠 바로가기">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.646447 8.64645C0.451184 8.84171 0.451184 9.15829 0.646447 9.35355C0.841709 9.54882 1.15829 9.54882 1.35355 9.35355L0.646447 8.64645ZM9.5 1C9.5 0.723858 9.27614 0.5 9 0.5L4.5 0.5C4.22386 0.5 4 0.723858 4 1C4 1.27614 4.22386 1.5 4.5 1.5L8.5 1.5L8.5 5.5C8.5 5.77614 8.72386 6 9 6C9.27614 6 9.5 5.77614 9.5 5.5L9.5 1ZM1.35355 9.35355L9.35355 1.35355L8.64645 0.646447L0.646447 8.64645L1.35355 9.35355Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </figure>
+                    <div>
+                        <h3><span>개발을 잘하는 방법!</span></h3>
+                        <p class="line3">보통 개발을 할 때 가장 필요한 스킬은 검색이다. 검색 키워드에 따라 해결 방안들이 다르고, 결과도 다를 수 있다.</p>
+                    </div>
+                </div>
+
+                
+            </div>
+        </section>
+        <!-- //card__wrap -->
+   
+    </main>
+    <!-- //main -->
+
+    <footer id="footer" class="mt80" role="contentinfo">
+        <div class="footer__inner container btStyle">
+            <div>Copyright 2023 archxxarch</div>
+            <div>constructed by archs</div>
+        </div>
+    </footer>
+    <!-- //footer -->
+
+</body>
+</html>

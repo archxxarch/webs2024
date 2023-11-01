@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 퀴즈 게임</title>
+    <link rel="stylesheet" href="asset/style.css">
+    <style>
+        .quiz__choice {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            align-items: baseline;
+            padding: 100px;
+            width: 100%;
+        }
+        .quiz__choice label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+        }   
+        .quiz__choice img {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        /* .quiz__choice:hover img {
+            transform: scale(1.1);
+        } */
+        .quiz__choice label img {
+
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
+        }
+        .quiz__selected {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            border: 5px solid #204C2A;
+            box-sizing: border-box; 
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap">
+            <div class="quiz">
+                <div class="quiz__header">
+                    <div class="timer"></div>
+                    <div class="timer__sec">15</div>
+                </div>
+                <div class="quiz__main">
+                    <div class="quiz__suggestion">문제에 맞는 사진을 찾자!</div>
+                    <div class="quiz__question">
+                        <div class="quiz__text"></div>
+                        <div class="quiz__choice" id="quizChoices">
+                            
+                        </div>
+                    </div>
+                    <div class="quiz__answer">
+
+                    </div>
+                    <div class="quiz__desc">
+
+                    </div>
+                </div>
+                <div class="quiz__footer">
+                    <div class="quiz__profile"></div>
+                    <div class="quiz__scoretext">맞은 점수</div>
+                    <div class="quiz__score">0</div>
+                    <div class="quiz__cloud"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- ..main -->
+
+    <script>
+        const quizContainer = document.querySelector(".quiz");
+        const quizChoices = document.getElementById("quizChoices");
+        const nextButton = document.getElementById("next-button");
+        const showScoreButton = document.getElementById("show-score-button");
+        const quizScore = document.querySelector(".quiz__score");
+    
+        const quizData = [
+            {
+                question: "가장 오래된 대학교",
+                choices: [
+                    { imageURL: "asset/img/image38.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image39.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image40.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image41.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "우리나라 지폐에 없는 인물",
+                choices: [
+                    { imageURL: "asset/img/image42.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image43.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image44.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image45.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "2010년대 데뷔한 아이돌",
+                choices: [
+                    { imageURL: "asset/img/image108.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image107.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image106.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image49.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "뉴욕에 위치하지 않은 대학",
+                choices: [
+                    { imageURL: "asset/img/image50.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image51.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image52.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image111.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "박새",
+                choices: [
+                    { imageURL: "asset/img/image54.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image55.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image56.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image57.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "파충류가 아닌 것",
+                choices: [
+                    { imageURL: "asset/img/image58.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image59.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image60.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image61.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "연봉이 가장 많은 회사",
+                choices: [
+                    { imageURL: "asset/img/image62.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image63.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image109.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image110.jpg", isCorrect: true }
+                ]
+            },
+            {
+                question: "우리나라가 개발하지 않은 것",
+                choices: [
+                    { imageURL: "asset/img/image37.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image66.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image88.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image98.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "가장 비싼 아파트",
+                choices: [
+                    { imageURL: "asset/img/image67.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image68.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image69.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image70.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "무궁화꽃",
+                choices: [
+                    { imageURL: "asset/img/image76.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image77.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image78.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image79.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "한국 국적인 사람",
+                choices: [
+                    { imageURL: "asset/img/image80.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image81.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image82.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image83.jpg", isCorrect: true }
+                ]
+            },
+            {
+                question: "가장 높은 건물",
+                choices: [
+                    { imageURL: "asset/img/image71.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image72.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image73.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image74.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "가장 최근에 발매된 앨범",
+                choices: [
+                    { imageURL: "asset/img/image84.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image85.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image86.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image87.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "투니버스 방영작이 아닌 것",
+                choices: [
+                    { imageURL: "asset/img/image103.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image105.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image104.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image92.jpg", isCorrect: false }
+                ]
+            },
+            {
+                question: "업데이트되지 않은 로고",
+                choices: [
+                    { imageURL: "asset/img/image99.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image100.jpg", isCorrect: true },
+                    { imageURL: "asset/img/image101.jpg", isCorrect: false },
+                    { imageURL: "asset/img/image102.jpg", isCorrect: false }
+                ]
+            },
+
+
+        ];
+    
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timer;
+        let secondsLeft = 15;
+
+        // 사진
+    
+        function displayQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            const questionText = quizContainer.querySelector(".quiz__text");
+            questionText.textContent = currentQuestion.question;
+    
+            quizChoices.innerHTML = "";
+            
+    
+            currentQuestion.choices.forEach((choice, index) => {
+                const choiceElement = document.createElement("div");
+                choiceElement.className = "quiz__choice";
+                choiceElement.innerHTML = `
+        <input type="hidden" name="choice" value="${index}" id="choice${index}">
+        <label for="choice${index}"><img src="${choice.imageURL}" alt="사진"></label> 
+
+    `;
+                quizChoices.appendChild(choiceElement);
+    
+                choiceElement.addEventListener("click", () => {
+                    const selectedChoiceIndex = parseInt(choiceElement.querySelector('input[name="choice"]').value);
+                    const selectedChoice = currentQuestion.choices[selectedChoiceIndex];
+    
+                    if (selectedChoice.isCorrect) {
+                        score++; // 정답인 경우 점수 증가
+                        quizScore.textContent = score; // 점수 표시 업데이트
+                    } 
+
+    
+                    // 선택한 보기를 강조하기 위해 클래스 추가/제거
+                    document.querySelectorAll(".quiz__choice").forEach((choice) => {
+                        choice.classList.remove("quiz__selected");
+                    });
+                    choiceElement.classList.add("quiz__selected");
+    
+                    // 정답을 선택한 후 1.5초 후에 다음 문제로 넘어가도록 타이머 설정
+                    setTimeout(() => {
+                        loadNextQuestion();
+                    }, 1500);
+                });
+            });
+        }
+    
+        function startTimer() {
+            clearInterval(timer);
+            secondsLeft = 15;
+            const timerSec = document.querySelector(".timer__sec");
+            timerSec.textContent = secondsLeft;
+    
+            timer = setInterval(() => {
+                secondsLeft--;
+                timerSec.textContent = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timer);
+                    loadNextQuestion();
+                }
+            }, 1000);
+        }
+    
+        function loadNextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                displayQuestion();
+                startTimer();
+            } else {
+                showScore();
+            }
+        }
+    
+        function showScore() {
+            clearInterval(timer);
+            const quizScore = document.querySelector(".quiz__score");
+            quizScore.textContent = `${score} / ${quizData.length}`;
+            showScoreButton.style.display = "block";
+        }
+    
+        displayQuestion();
+        startTimer();
+    
+        // 다음 버튼은 더 이상 필요하지 않으므로 제거합니다.
+        nextButton.style.display = "none";
+    
+        showScoreButton.addEventListener("click", () => {
+            showScore();
+        });
+    </script>
+    </body>
+    
+    </html>

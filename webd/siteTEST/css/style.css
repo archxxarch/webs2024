@@ -1,0 +1,150 @@
+#wrap {
+    width: 100%;
+    margin: 0 auto;
+}
+#header {
+    width: 1200px;
+    display: flex;
+}
+.logo {
+    width: 20%;
+    height: 100px;
+    background-color: #ebebeb;
+    align-items: center;
+    font-size: 2rem;
+    list-style: none;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    top: 50px;
+    font-weight: 800;
+}
+.nav {
+    width: 80%;
+    height: 100px;
+    background-color: #e6e6e6;
+}
+.nav ul {
+    display: flex;
+    justify-content: right;
+}
+.nav ul li ul li {
+    list-style: none;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    padding-right: 50px;
+    background-color: #555;
+}
+.mainmenu {
+    text-decoration: none;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #888;
+}
+.main {
+    width: 150px;
+    height: 50px;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: #777;
+}
+.main:hover {
+    background-color: #111;
+    color: #fff;
+    transition: all 0.3s;
+}
+.submenu {
+    flex-direction: column;
+    cursor: pointer;
+    background-color: #666;
+}
+.submenu li {
+    display: none;
+}
+#slider {
+    width: 1200px;
+    height: 300px;
+    background-color: #d4d4d4;
+}
+#slider ul {
+    margin: 0;
+    padding: 0;
+}
+#slider ul li {
+    list-style: none;
+}
+#main {
+    width: 1200px;
+    display: flex;
+}
+.content {
+    width: 33.3333%;
+    height: 200px;
+    background-color: #bababa;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+.content ul {
+    padding-left: 1rem;
+}
+.notice {
+    list-style: none;
+}
+.notice ul li {
+    padding-bottom: 0.5rem;
+}
+.notice ul li:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.notice ul li {
+    list-style: none;
+    cursor: pointer;
+}
+.gallery {
+    display: none;
+}
+.gallery ul li {
+    list-style: none;
+}
+.banner {
+    width: 33.3333%;
+    height: 200px;
+    background-color: #b3b3b3;
+}
+.link {
+    width: 33.3333%;
+    height: 200px;
+    background-color: #acacac;
+}
+
+#footer {
+    width: 1200px;
+    display: flex;
+}
+.footer__logo {
+    width: 20%;
+    height: 100px;
+    background-color: #ebebeb;
+    align-items: center;
+    font-size: 2rem;
+    list-style: none;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    top: 50px;
+    font-weight: 800;
+}
+.copyright {
+    width: 60%;
+    height: 100px;
+    background-color: #757575;
+}
+.sns {
+    width: 20%;
+    height: 100px;
+    background-color: #5a5a5a;
+}

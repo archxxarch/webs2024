@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: "NexonLv1Gothic";
 }
-pre.code.hljs {
+pre.code.hljs { 
     margin-bottom: 0 !important;
 }
 

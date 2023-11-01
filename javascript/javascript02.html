@@ -66,6 +66,8 @@
                     <li><a href="#a19">19. 객체 : 데이터 불러오기 : for in</a></li>
                     <li><a href="#a20">20. 객체 : 데이터 불러오기 : 객체 펼침 연산자</a></li>
                     <li><a href="#a21">21. 객체 : 데이터 불러오기 : 객체 구조 분해 할당</a></li>
+                    <li><a href="#a22">22. 파일 : 서버 데이터 불러오기 : XMLHttpRequest</a></li>
+                    <li><a href="#a23">23. 파일 : 서버 데이터 불러오기 : fetch API</a></li>
                 </ul>
             </div>
             <!-- //main__menu -->
@@ -845,6 +847,71 @@
                 </div>
                 <!-- // sample21-->
 
+                <div id="sample22" class="sample">
+                    <h3>22. 파일 : 서버 데이터 불러오기 : XMLHttpRequest</h3>
+                    <p>XMLHttpRequest (XHR)는 웹 애플리케이션에서 서버와 상호작용하기 위한 JavaScript API입니다. 
+                    </p>
+<pre><code class="language-js">
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
+
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        var responseData = xhr.responseText;
+        var jsonData = JSON.parse(responseData);
+
+            console.log(jsonData);
+    } else if (xhr.readyState === 4) {
+        console.error("데이터 불러오기 오류: " + xhr.status);
+    }
+};
+
+xhr.send();
+</code></pre>
+                    <p class="desc">
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- // sample22-->
+
+                <div id="sample23" class="sample">
+                    <h3>23. 파일 : 서버 데이터 불러오기 : fetch API</h3>
+                    <p>Fetch API는 JavaScript에서 서버로 HTTP 요청을 보내고 응답을 처리하는 기능을 제공하는 현대적인 웹 API입니다. 
+                    </p>
+<pre><code class="language-js">
+{
+    fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+</code></pre>
+                    <p class="desc">
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- // sample23-->
+
             </div>
             <!-- // main__sample -->
         </main>
@@ -1085,6 +1152,37 @@
             console.log(a1);
             console.log(b1);
             console.log(z1);
+        }
+
+        // 22
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
+        
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var responseData = xhr.responseText;
+                var jsonData = JSON.parse(responseData);
+
+                    console.log(jsonData);
+            } else if (xhr.readyState === 4) {
+                console.error("데이터 불러오기 오류: " + xhr.status);
+            }
+        };
+        
+        xhr.send();
+
+        // 23
+        {
+            fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
     </script>
 </body>

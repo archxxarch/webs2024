@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.image-slider {
+    justify-content: space-around;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slide {
+    flex: 0 0 auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #999;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+body {
+    background: linear-gradient(to right bottom, #D4CDFE, #F8A592, #FFE7AD);
+}
+
+/* 좋아요 이미지가 눌렸을 때 배경 그라데이션 색상 변경 */
+.liked {
+    background: linear-gradient(to right bottom, #503BCF, #ED5938, #F8D070);
+}
+
+#main {
+    /* background: linear-gradient(to right bottom, #D4CDFE, #F8A592, #FFE7AD); */
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.container {
+    width: 30rem;
+    height: 90%;
+    border-radius: 50px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.5rem;
+    box-shadow: 0 0 10px 10px #78787846;
+}
+
+/* cont__top */
+.cont__top {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.cont__top__profile img {
+    width: 60px;
+    height: 60px;
+}
+
+.cont__top__desc {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+.cont__top__desc p {
+    color: #444;
+    font-size: 1.2rem;
+}
+
+/* cont__mid */
+.cont__mid {
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.cont__mid .slider-dots span {
+    width: 10px;
+    height: 10px;
+    color: #919191;
+    display: inline-block;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.cont__mid button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: #bcbcbc;
+}
+
+.cont__mid button.active {
+    background-color: #0093ff;
+}
+
+.slider__button {
+    align-items: center;
+    justify-content: center;
+}
+
+/* cont__bottom */
+.cont__bottom {
+    position: relative;
+}
+
+.cont__bottom1 {
+    display: flex;
+}
+
+.cont__bottom__comment {
+    position: absolute;
+    right: 5%;
+}
+
+.cont__bottom__like {
+    display: flex;
+}
+
+.cont__bottom__dislike {
+    margin-left: 2rem;
+    display: flex;
+}
+.cont__bottom1 {
+    margin-top: 0.5rem;
+}
+.cont__bottom1 p {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    color: #444;
+}
+
+.cont__bottom__view {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.cont__bottom__desc {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    font-size: 1.5rem;
+}
+
+.cont__bottom__desc em {
+    list-style: none;
+    font-style: normal;
+}
+
+.cont__bottom__desc p {
+    margin-left: 0.5rem;
+    color: blue;
+}
+
+@media (max-width: 600px) {
+    body {
+        background: linear-gradient(to right bottom, #fff, #fff);
+    }
+
+    #main {
+        background: linear-gradient(to right bottom, #fff, #fff);
+    }
+
+    .container {
+        height: 95vh;
+        border-radius: 0;
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 10px 10px;
+    }
+
+    .cont__top {
+        margin-bottom: 0.5rem;
+    }
+
+    .cont__top__profile {
+        position: relative;
+        margin-right: -1.5rem;
+    }
+
+    .cont__top__profile img {
+        max-width: 60%;
+        height: auto;
+    }
+
+    .cont__top__desc {
+        font-size: 1rem;
+        margin-left: 0.5rem;
+    }
+
+    .cont__top__desc p {
+        font-weight: 500;
+        color: #444;
+        font-size: 0.7rem;
+        margin-top: 0.2rem;
+    }
+
+    .cont__bottom__like img {
+        width: 60%;
+        height: auto;
+    }
+    .cont__bottom__dislike {
+        margin-left: 1rem;
+    }
+    .cont__bottom__dislike img {
+        width: 60%;
+        height: auto;
+    }
+
+    .cont__bottom1 {
+        margin-top: 0.5rem;
+    }
+
+    .cont__bottom1 p {
+        font-size: 1rem;
+        margin-left: 0.3rem;
+    }
+    .cont__bottom__view {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+    }
+
+    .cont__bottom__desc {
+        margin-top: 0.2rem;
+        font-size: 1rem;
+    }
+
+    .cont__mid img {
+        width: 100%;
+        height: auto;
+    }
+
+    .cont__mid button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        color: #919191;
+        background-color: #919191;
+    }
+
+    .control-button {
+        margin: 0 2px;
+    }
+
+    .cont__bottom__comment {
+        right: 1%;
+    }
+
+    .cont__bottom__comment img {
+        width: 70%;
+        height: auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .container {
+        width: 87.9%;
+        height: 95vh;
+    }
+
+}
